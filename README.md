@@ -9,4 +9,6 @@ Penumbra
 
 # Usage
 1. Update bin/yahoo.rb to contain Yahoo username, password
-2. Exec bin/yahoo.rb
+2. Create a data folder (mkdir ./data)
+3. Update the range of messages to be downloaded in bin/yahoo.rb
+4. Exec bin/yahoo.rb (e.g. Unix ./bin/yahoo.rb)
