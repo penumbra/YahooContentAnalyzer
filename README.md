@@ -1,11 +1,11 @@
 # About
-MRI Ruby program for reading the contents of a Yahoo New Group
+MRI Ruby program for reading the contents of a Yahoo News Group
 
 # Date
 2012-03-25
 
 # Author
-Scott Crawford
+Penumbra
 
 # Usage
 1. Update bin/yahoo.rb to contain Yahoo username, password
