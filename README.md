@@ -10,7 +10,8 @@ MRI Ruby program for reading the contents of a Yahoo News Group
 # Analyzing the Newsgroup Content
 ## Open Calais
 The OpenCalais Web Service automatically creates rich semantic metadata for the content you submit – in well under a second. Using natural language processing (NLP), machine learning and other methods, Calais analyzes your document and finds the entities within it. But, Calais goes well beyond classic entity identification and returns the facts and events hidden within your text as well.
- * http://www.opencalais.com/documentation/calais-web-service-api
+
+* http://www.opencalais.com/documentation/calais-web-service-api
 
 ## Zemanta
 Zemanta's core technology is widely acclaimed as one of the best semantic recommendations engines on the market.
