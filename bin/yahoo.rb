@@ -6,7 +6,7 @@ $LOAD_PATH << lib_dir << '.'
 require 'yahoo'
 
 # uses lib/yahoo.rb to read SynchronicityPhenomena group content
-yahoo = Yahoo.new( 'penumbrareader@yahoo.com', 'PASSWORD_HERE')
+yahoo = Yahoo.new( 'YOUR_YAHOO_ID@yahoo.com', 'PASSWORD_HERE')
 
 html = yahoo.select_group( 'SynchronicityPhenomena' )
 
