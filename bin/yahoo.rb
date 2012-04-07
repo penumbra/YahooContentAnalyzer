@@ -12,7 +12,7 @@ html = yahoo.select_group( 'SynchronicityPhenomena' )
 
 # Browse::Helper::save( 'data/synchronicity_phenomena.html', html ) unless html == nil
 
-(17277..20000).each do |id|
+(10000..20000).each do |id|
   html = yahoo.get_message(id)
 
   sleep( 10 )
