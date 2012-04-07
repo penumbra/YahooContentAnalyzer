@@ -14,10 +14,12 @@ The OpenCalais Web Service automatically creates rich semantic metadata for the 
 
 ## Zemanta
 Zemanta's core technology is widely acclaimed as one of the best semantic recommendations engines on the market.
- * http://www.zemanta.com/outreach/technology/
+
+* http://www.zemanta.com/outreach/technology/
 
 ## Example
 To illustrate these tools, paste the text of one of the downloaded messages into 
- * http://viewer.opencalais.com/
- * http://www.zemanta.com/demo/
+ 
+* http://viewer.opencalais.com/
+* http://www.zemanta.com/demo/
 
