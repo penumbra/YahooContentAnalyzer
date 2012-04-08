@@ -27,7 +27,7 @@ module Yahoo
       end
 
       # create the data folder unless it already exits
-      make_data_dir( @data_path )
+      Yahoo::FileUtils::make_data_dir( @data_path )
 
       # do reprocessing (file content failed to download due to Yahoo Group limitations)
       reprocess_messages unless @do_reprocessing == false
