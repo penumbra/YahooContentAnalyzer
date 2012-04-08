@@ -27,13 +27,13 @@ module Yahoo
       # open the main page of the user-specified group
       html = @yahoo.select_group( @group_name )
 
+      # create the data folder unless it already exits
+      Yahoo::FileUtils::make_data_dir( @data_path )
+
       if @save_group_page
         fn = File::join(@data_path, @group_name)
         Yahoo::FileUtils::write_file( fn, html ) unless html == nil
       end
-
-      # create the data folder unless it already exits
-      Yahoo::FileUtils::make_data_dir( @data_path )
 
       # do reprocessing (file content failed to download due to Yahoo Group limitations)
       reprocess_messages unless @do_reprocessing == false
