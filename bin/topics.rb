@@ -9,6 +9,11 @@ FilePath = '/projects/yahoo/data/00001_05000'
 
 tf = Topics::Finder.new( FilePath )
 tf.parse_files
+
+f = File.open('/projects/yahoo/data/topics.txt', 'w')
+
 tf.topics.sort.each do |topic|
-  puts topic
+  f.puts topic
 end
+
+f.close
