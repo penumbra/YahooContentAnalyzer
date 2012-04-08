@@ -8,7 +8,5 @@ require 'yahoo'
 # uses lib/yahoo.rb to read SynchronicityPhenomena group content
 yahoo_runner = Yahoo::Runner.new( '/projects/yahoo/yahoo.yml' )
 
-# download 1,000 messages
-(1..1000).each do |id|
-  yahoo_runner.process_message( id )
-end
+# download 1,000 messages from my favorite Yahoo Newsgroup
+(1..1000).each { |id| yahoo_runner.process_message( id ) }
