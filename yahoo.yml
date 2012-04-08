@@ -1,0 +1,6 @@
+yahoo:
+  login_id: 'my_user_id@yahoo.com'
+  password: 'my_yahoo_password'
+  group_name: 'SynchronicityPhenomena'
+  data_path: '/projects/yahoo/data'
+  save_group_page: false
