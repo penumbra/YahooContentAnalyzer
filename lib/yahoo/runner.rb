@@ -2,7 +2,13 @@ require 'rubygems'
 require 'yaml'
 
 module Yahoo
-  # uses lib/yahoo.rb to read group content specified by yahoo.yml
+  # usage:
+  #   yr = Yahoo::Runner( my_yaml_file )
+  #   (1..10000).each {|id| yr.process_message( id ) }
+  #
+  # also:
+  #   details on how to activate the reprocessing feature may be
+  #   found in parse_reprocess.rb
   class Runner
     # wait 5 seconds so as to not cause a denial of service exception
     WaitSeconds = 5
