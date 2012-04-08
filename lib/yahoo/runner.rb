@@ -27,15 +27,13 @@ class YahooRunner
     make_data_dir
 
     # do reprocessing (file content failed to download due to Yahoo Group limitations)
-    if @do_reprocessing == true
-      do_reprocessing
-    end
+    reprocess unless @do_reprocessing == false
   end
 
   #
   # reprocess html files that were 'unavailable' due to group limits having been reached
   #
-  def do_reprocessing
+  def reprocess
     require 'reprocess'
     reproc = Reprocess.new( @reprocess_file )
 
