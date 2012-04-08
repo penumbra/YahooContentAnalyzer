@@ -1,0 +1,1 @@
+require 'topics/finder.rb'
