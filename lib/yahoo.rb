@@ -2,5 +2,6 @@ require 'rubygems'
 require 'browse'
 
 require 'yahoo/groups'
-require 'yahoo/reprocess'
+require 'yahoo/parse_reprocess'
+require 'yahoo/file_utils'
 require 'yahoo/runner'
