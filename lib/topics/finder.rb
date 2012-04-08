@@ -7,8 +7,10 @@ module Topics
   class Finder
     GroupTopicXPath = "//td[@class='ygrp-topic-title entry-title']"
 
+    # a collection of unique Yahoo Group Topic names
     attr_reader :topics
 
+    # path to folder containing Yahoo Group html files
     def initialize( path )
       @path = path
       @topics = Set.new
