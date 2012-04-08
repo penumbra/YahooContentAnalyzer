@@ -23,7 +23,7 @@ module Yahoo
 
       if @save_group_page
         fn = File::join(@data_path, @group_name)
-        write_file( fn, html ) unless html == nil
+        Yahoo::FileUtils::write_file( fn, html ) unless html == nil
       end
 
       # create the data folder unless it already exits
