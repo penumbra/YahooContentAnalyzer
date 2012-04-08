@@ -8,18 +8,20 @@
 # message-28001.html:The message you requested is temporarily unavailable because this group has exceeded its download limit.
 # message-28001.html:The message you requested is temporarily unavailable because this group ...
 #
-class Reprocess
-  attr_reader :ids
+module Yahoo
+  class ParseReprocess
+    attr_reader :ids
 
-  def initialize( reprocess_fn )
-    f = File.open( reprocess_fn )
+    def initialize( reprocess_fn )
+      f = File.open( reprocess_fn )
 
-    @ids = []
-    f.lines.each do |line|
-      val =  line[8..12]
-      @ids << val
+      @ids = []
+      f.lines.each do |line|
+        val =  line[8..12]
+        @ids << val
+      end
+
+      f.close
     end
-
-    f.close
   end
 end
