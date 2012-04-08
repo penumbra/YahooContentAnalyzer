@@ -4,3 +4,5 @@ yahoo:
   group_name: 'SynchronicityPhenomena'
   data_path: '/projects/yahoo/data'
   save_group_page: false
+  do_reprocessing: true
+  reprocess_file: '/projects/yahoo/reprocess.txt'
