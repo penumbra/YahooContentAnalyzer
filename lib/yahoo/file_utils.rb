@@ -5,7 +5,7 @@ module Yahoo
   class FileUtils
     # save
     def self.write_file( filename, html )
-      puts "writing #{fn}..."
+      puts "writing #{filename}..."
       File.open(filename, 'w') {|file| file.write( html ) }
     end
 
