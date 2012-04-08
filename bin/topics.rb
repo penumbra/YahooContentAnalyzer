@@ -3,17 +3,10 @@
 lib_dir = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH << lib_dir << '.'
 
-require 'topics'
+require 'yahoo'
 
-FilePath = '/projects/yahoo/data/00001_05000'
+ConfigFile = '/projects/yahoo/yahoo_secret.yml'
 
-tf = Topics::Finder.new( FilePath )
-tf.parse_files
+tr = Yahoo::Topics::Runner.new( ConfigFile )
 
-f = File.open('/projects/yahoo/data/topics.txt', 'w')
-
-tf.topics.sort.each do |topic|
-  f.puts topic
-end
-
-f.close
+tr.process_data
