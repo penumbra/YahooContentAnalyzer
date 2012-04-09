@@ -4,7 +4,7 @@ require 'nokogiri'
 
 module Yahoo
   module Content
-    # scan a folder of html files to form an aggregate of unique topic names
+    # scan a folder of html files to extract the message content
     class ContentFinder < Yahoo::Finder
       GroupContentXPath = "//div[@class='msgarea entry-content']"
 
