@@ -2,7 +2,7 @@ module Yahoo
   module Topics
     # usage:
     #   tr = Topics::Runner( my_yaml_file )
-    class Runner < RunnerBase
+    class Runner < Yahoo::Runner
       # File search path expression to find downloaded html files across folders
       SearchExpression = '**/message-*.html'
 
@@ -20,7 +20,7 @@ module Yahoo
 
         entries.sort.each do |entry|
           puts "processing #{entry}"
-          @topics << Yahoo::Topics::Finder.find_topic( entry )
+          @topics << Yahoo::Topics::TopicFinder.find_topic( entry )
         end
       end
 
