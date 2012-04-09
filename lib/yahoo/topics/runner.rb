@@ -34,8 +34,8 @@ module Yahoo
       def save_results( fn )
         f = File.open( fn, 'w' )
 
-        topic_runner.topics.sort.each {|t| f.puts t }
-
+        @topics.sort.each {|t| f.puts t }
+      ensure
         f.close
       end
     end
