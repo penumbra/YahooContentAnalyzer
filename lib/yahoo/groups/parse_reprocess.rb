@@ -9,19 +9,21 @@
 # message-28001.html:The message you requested is temporarily unavailable because this group ...
 #
 module Yahoo
-  class ParseReprocess
-    attr_reader :ids
+  module Groups
+    class ParseReprocess
+      attr_reader :ids
 
-    def initialize( reprocess_fn )
-      f = File.open( reprocess_fn )
+      def initialize( reprocess_fn )
+        f = File.open( reprocess_fn )
 
-      @ids = []
-      f.lines.each do |line|
-        val =  line[8..12]
-        @ids << val
+        @ids = []
+        f.lines.each do |line|
+          val =  line[8..12]
+          @ids << val
+        end
+
+        f.close
       end
-
-      f.close
     end
   end
 end

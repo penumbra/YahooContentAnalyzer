@@ -11,7 +11,7 @@ module Yahoo
 
     def self.format_filename( path, id )
       fn = File::join( path, 'message' )
-      fn = format("#{fn}-%05d.html", id)
+      format("#{fn}-%05d.html", id)
     end
 
     def self.make_data_dir( path )
