@@ -12,4 +12,4 @@ tr = Yahoo::Topics::Runner.new( ConfigFile )
 
 # process all message-####.html files anywhere within the data_path folder
 tr.process_messages
-tr.save( TopicsFile )
+tr.save_results( TopicsFile )
