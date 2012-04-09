@@ -6,6 +6,7 @@ module Yahoo
     class Runner
       # Tag used in YAML file to identify the Yahoo configuration block
       YahooConfigTag = 'yahoo'
+      # File search path expression to find downloaded html files across folders
       SearchExpression = '**/message-*.html'
 
       attr_reader :topics
@@ -28,6 +29,14 @@ module Yahoo
           puts "processing #{entry}"
           @topics << Yahoo::Topics::Finder.find_topic( entry )
         end
+      end
+
+      def save_results( fn )
+        f = File.open( fn, 'w' )
+
+        topic_runner.topics.sort.each {|t| f.puts t }
+
+        f.close
       end
     end
   end
