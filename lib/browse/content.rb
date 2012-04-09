@@ -1,4 +1,8 @@
 module Browse
+  #
+  # Browse::Content is a thin wrapper exposing a
+  # few essential Mechanize features
+  #
   class Content
     attr_reader :agent
 

@@ -2,21 +2,14 @@ module Yahoo
   module Topics
     # usage:
     #   tr = Topics::Runner( my_yaml_file )
-    #
-    class Runner
-      # Tag used in YAML file to identify the Yahoo configuration block
-      YahooConfigTag = 'yahoo'
+    class Runner < RunnerBase
       # File search path expression to find downloaded html files across folders
       SearchExpression = '**/message-*.html'
 
       attr_reader :topics
 
       def initialize( yahoo_yml )
-        prop = YAML::load_file( yahoo_yml )
-
-        # create instance variables from the yahoo: group properties
-        prop[YahooConfigTag].each { |key, value| instance_variable_set("@#{key}", value) }
-
+        super( yahoo_yml )
         @topics = Set.new
       end
 

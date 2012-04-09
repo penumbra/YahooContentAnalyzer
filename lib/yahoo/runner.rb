@@ -9,17 +9,12 @@ module Yahoo
   # also:
   #   details on how to activate the reprocessing feature may be
   #   found in parse_reprocess.rb
-  class Runner
+  class Runner < RunnerBase
     # wait 5 seconds so as to not cause a denial of service exception
     WaitSeconds = 5
-    # Tag used in YAML file to identify the Yahoo configuration block
-    YahooConfigTag = 'yahoo'
 
     def initialize( yahoo_yml )
-      prop = YAML::load_file( yahoo_yml )
-
-      # create instance variables from the yahoo: group properties
-      prop[YahooConfigTag].each { |key, value| instance_variable_set("@#{key}", value) }
+      super( yahoo_yml )
 
       # use YahooGroups class to login to Yahoo
       @yahoo = Yahoo::Groups.new( @login_id, @password )
