@@ -8,34 +8,17 @@ module Yahoo
     class Finder
       GroupTopicXPath = "//td[@class='ygrp-topic-title entry-title']"
 
-      # a collection of unique Yahoo Group Topic names
-      attr_reader :topics
+      def self.find_topic( fn )
+        f = File.open( fn )
+        html = Nokogiri::HTML( f )
 
-      # path to folder containing Yahoo Group html files
-      def initialize( path )
-        @path = path
-        @topics = Set.new
-      end
-
-      def parse_files
-        entries = Dir.entries( @path )
-
-        entries.sort.each do |fn|
-          if File.directory?( fn ) == false
-            find_topic( fn )
-          end
-        end
-      end
-
-  private
-      def find_topic( fn )
-        f = File.open( File.join( @path, fn) )
-
-        html = Nokogiri::HTML(f)
         node = html.xpath(GroupTopicXPath)
-        @topics << node.text
+
+        # topic is returned to caller as text
+        node.text
       rescue Exception => ex
         puts "Error with file #{fn} - #{ex}"
+        nil  # nil topic name is returned
       ensure
         f.close
       end

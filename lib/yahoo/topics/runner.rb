@@ -1,13 +1,14 @@
 module Yahoo
   module Topics
-    attr_reader :all_topics
-
     # usage:
     #   tr = Topics::Runner( my_yaml_file )
     #
     class Runner
       # Tag used in YAML file to identify the Yahoo configuration block
       YahooConfigTag = 'yahoo'
+      SearchExpression = '**/message-*.html'
+
+      attr_reader :topics
 
       def initialize( yahoo_yml )
         prop = YAML::load_file( yahoo_yml )
@@ -15,31 +16,18 @@ module Yahoo
         # create instance variables from the yahoo: group properties
         prop[YahooConfigTag].each { |key, value| instance_variable_set("@#{key}", value) }
 
-        @all_topics = Set.new
+        @topics = Set.new
       end
 
-      def process_data
-        entries = Dir.entries( @data_path )
+      # find the message-#####.html files and add the topic name to @topics
+      def process_messages
+        html_search = File.join( @data_path, SearchExpression )
+        entries = Dir.glob( html_search )
 
-        entries.each do |entry|
-          fn = File.join( @data_path, entry )
-
-          if File.directory?(fn) and (entry != '.' && entry != '..')
-            puts "scanning files in #{entry}"
-            find_topics( fn )
-          end
+        entries.sort.each do |entry|
+          puts "processing #{entry}"
+          @topics << Yahoo::Topics::Finder.find_topic( entry )
         end
-      end
-
-      def find_topics( path )
-        tf = Topics::Finder.new( path )
-        tf.parse_files
-
-        tf.topics.each do |topic|
-          @all_topics << topic
-        end
-
-        puts "all topics: #{@all_topics.size}"
       end
     end
   end
