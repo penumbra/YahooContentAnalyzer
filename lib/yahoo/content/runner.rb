@@ -14,10 +14,8 @@ module Yahoo
 
       # find the message-#####.html files and add the topic name to @topics
       def process_messages
-        html_search = File.join( @data_path, SearchExpression )
-        entries = Dir.glob( html_search )
-
         count = 0
+        entries = Dir.glob( File.join( @data_path, SearchExpression ) )
 
         entries.sort.each do |entry|
           count += 1
@@ -27,6 +25,7 @@ module Yahoo
           return if count >= 20
         end
       end
+
 
       def extract_message_information( entry )
         # console puts "processing #{msg_id}"
