@@ -22,20 +22,21 @@ module Yahoo
       def report_amplify_results
         results = @amplify.results
 
-        results.each do |k, v|
-          wt = 0.0
-          v.each do |h|
-            if h[:weight]
-              wt = h[:weight]
-            end
-          end
-          puts "topic => #{k}, entity count #{v.size - 1}, weight => #{wt}"
-          v.each do |h|
-            if not h[:weight]
-              h.each {|k,v| puts "  #{k}->#{v}"}
-            end
+        results.each do |topic_name, values|
+          puts "topic => #{topic_name}, entity count #{values.size - 1}, weight => #{get_weight( values )}"
+        end
+      end
+
+      def get_weight( values )
+        wt = nil
+
+        values.each do |value|
+          if value[:weight]
+            wt = value[:weight]
           end
         end
+
+        wt
       end
     end
   end
