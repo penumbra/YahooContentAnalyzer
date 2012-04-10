@@ -29,6 +29,12 @@ module Yahoo
         process_results( doc )
       end
 
+      # example @results array of hashes
+      #
+      # {:topic => 'Uploaded', :weight => '5.0'}
+      # {:entity => 'Type', :value => 'Person'}
+      # {:entity => 'SubType', :value => 'male'}
+      #
       def process_results( doc )
         @results = Array.new
 
@@ -36,24 +42,21 @@ module Yahoo
 
         if topics != nil
           topics.each do |topic|
-            tn = topic.xpath("Topic/Name/text()").to_s
-            wt = topic.xpath("Topic/Value/text()").to_s
+            @results << {:topic => topic.xpath("Topic/Name/text()").to_s,
+                         :weight => topic.xpath("Topic/Value/text()").to_s}
 
-            @results << {:topic => tn, :weight => wt}
-
-            named_entities = get_topic_values( topic )
-
-            named_entities.each {|entity| @results << val }
+            ne = get_named_entities( topic )
+            ne.each {|hash| @results << hash }
           end
         end
       end
 
+      # returns an array of named entity information as hashes
       def get_named_entities( topic )
         values = Array.new
 
         # check NamedEntityType within each topic
         topic.xpath("NamedEntityType").select do |entity|
-          # NamedEntityType/Result/Name, etc.
           entity.xpath('Result').each do |result|
             values << {:entity => result.xpath('Name/text()').to_s,
                        :value => result.xpath('Value/text()').to_s}
