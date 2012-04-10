@@ -20,11 +20,10 @@ module Yahoo
       end
 
       def report_amplify_results
-        @amplify.topics.each do |key, values|
-          puts "#{key} [ #{values} ]"
+        @amplify.results.each do |result|
+          result.each {|k,v| puts "#{k} [ #{v} ]"}
         end
       end
     end
   end
 end
-

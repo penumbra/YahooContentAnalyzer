@@ -10,7 +10,7 @@ module Yahoo
       ApiHost= 'portaltnx20.openamplify.com'
       ApiPath= '/AmplifyWeb_v20/AmplifyThis'
 
-      attr_reader :topics
+      attr_reader :results
 
       def initialize
         @http = Net::HTTP.new(ApiHost, ApiPort)
@@ -26,57 +26,41 @@ module Yahoo
 
         doc = Nokogiri::XML( response.read_body )
 
-        @topics = Hash.new
-
-        show_topics( doc )
+        process_results( doc )
       end
 
-      def show_topics( doc )
-        important_topics = doc.xpath("//TopicResult")
+      def process_results( doc )
+        @results = Array.new
 
-        puts "topics size: #{important_topics.size}"
+        topics = doc.xpath("//TopicResult")
 
-        important_topics.each do |topic|
-          values = Array.new
+        if topics != nil
+          topics.each do |topic|
+            tn = topic.xpath("Topic/Name/text()").to_s
+            wt = topic.xpath("Topic/Value/text()").to_s
 
-          topic_name = topic.xpath("Topic/Name/text()").to_s
+            @results << {:topic => tn, :weight => wt}
 
-          values << {:name => topic_name, :weight => topic.xpath("Topic/Value/text()").to_s }
+            named_entities = get_topic_values( topic )
 
-          topic.xpath("NamedEntityType").select do |entity|
-
-            # populated with one or more named entity name/value pairs
-            entity.xpath('Result').each do |result|
-              name = result.xpath('Name/text()').to_s
-              value = result.xpath('Value/text()').to_s
-
-              values << {:entity => name, :value => value}
-            end
+            named_entities.each {|entity| @results << val }
           end
-
-          @topics[topic_name] = values
         end
       end
 
-      # Polarity is the attitude expressed towards a Topic in the text.
-      def show_rexml_polarity( doc )
-        important_topics = REXML::XPath.match(doc, "//TopicResult").select do |topic|
-          REXML::XPath.match(topic, "Polarity/Mean/Name/text()") != 'Neutral'
+      def get_named_entities( topic )
+        values = Array.new
+
+        # check NamedEntityType within each topic
+        topic.xpath("NamedEntityType").select do |entity|
+          # NamedEntityType/Result/Name, etc.
+          entity.xpath('Result').each do |result|
+            values << {:entity => result.xpath('Name/text()').to_s,
+                       :value => result.xpath('Value/text()').to_s}
+          end
         end
 
-        important_topics.sort! do |a, b|
-          a_importance = Float(REXML::XPath.match(a, "Polarity/Mean/Value/text()")[0].to_s).abs
-          b_importance = Float(REXML::XPath.match(b, "Polarity/Mean/Value/text()")[0].to_s).abs
-          a_importance <=> b_importance
-        end
-
-        important_topics[-10..-1].each do |topic|
-          name = REXML::XPath.match(topic, "Topic/Name/text()")
-
-          polarity = REXML::XPath.match(topic, "Polarity/Mean/Name/text()")
-          puts "#{name}: #{polarity}"
-        end
-
+        values
       end
     end
   end
