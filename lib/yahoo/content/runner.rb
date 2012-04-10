@@ -9,6 +9,7 @@ module Yahoo
       def initialize( yahoo_yml )
         super( yahoo_yml )
         @content = Hash.new
+        @amplify = Yahoo::Content::Amplify.new
       end
 
       # find the message-#####.html files and add the topic name to @topics
@@ -16,16 +17,33 @@ module Yahoo
         html_search = File.join( @data_path, SearchExpression )
         entries = Dir.glob( html_search )
 
+        count = 0
+
         entries.sort.each do |entry|
-          msg_id = get_id( entry )
-          puts "processing #{msg_id}"
+          count += 1
 
-          message = Yahoo::Content::ContentFinder.find_message( entry )
+          extract_message_information( entry )
 
-          # console io
-          puts "msg_id => #{msg_id} content => #{message}"
+          return if count >= 20
+        end
+      end
 
-          @content.merge!( {:message_id => msg_id, :content => message } )
+      def extract_message_information( entry )
+        # console puts "processing #{msg_id}"
+        message = Yahoo::Content::ContentFinder.find_message( entry )
+
+        # add to a hash containing of all message content
+        @content.merge!( {:id => get_id( entry ), :content => message } )
+
+        # perform information extraction using Open Amplify API
+        @amplify.analyze_message( message )
+
+        report_results
+      end
+
+      def report_results
+        @amplify.topics.each do |key, values|
+          puts "#{key} [ #{values} ]"
         end
       end
 
