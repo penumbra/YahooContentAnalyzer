@@ -17,3 +17,9 @@ require 'yahoo/groups/parse_reprocess'
 require 'yahoo/topics/topic_finder'
 require 'yahoo/topics/runner'
 
+# process the message content
+require 'yahoo/content/content_finder'
+require 'yahoo/content/amplify'
+require 'yahoo/content/info_extraction'
+require 'yahoo/content/runner'
+

@@ -8,44 +8,27 @@ module Yahoo
 
       def initialize( yahoo_yml )
         super( yahoo_yml )
-        @content = Hash.new
-        @amplify = Yahoo::Content::Amplify.new
+
+        @ie = Yahoo::Content::InfoExtraction.new
+        @count = 0
       end
 
       # find the message-#####.html files and add the topic name to @topics
       def process_messages
-        count = 0
-        entries = Dir.glob( File.join( @data_path, SearchExpression ) )
+        file_entries = Dir.glob( File.join( @data_path, SearchExpression ) )
 
-        entries.sort.each do |entry|
-          count += 1
+        file_entries.sort.each do |entry|
+          @count += 1
 
-          extract_message_information( entry )
+          @ie.extract( get_id( entry), Yahoo::Content::ContentFinder.find_message( entry ) )
 
-          return if count >= 20
+          # debug
+          return if @count > 3
         end
       end
 
-
-      def extract_message_information( entry )
-        # console puts "processing #{msg_id}"
-        message = Yahoo::Content::ContentFinder.find_message( entry )
-
-        # add to a hash containing of all message content
-        @content.merge!( {:id => get_id( entry ), :content => message } )
-
-        # perform information extraction using Open Amplify API
-        @amplify.analyze_message( message )
-
-        report_results
-      end
-
-      def report_results
-        @amplify.topics.each do |key, values|
-          puts "#{key} [ #{values} ]"
-        end
-      end
-
+      # relies on the construct from Yahoo::Groups module where downloaded files
+      # are called 'message-#####.html'
       def get_id( entry )
         idx = entry =~ /message-[0-9]/
         max = entry.size - 1
