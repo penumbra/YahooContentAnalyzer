@@ -4,7 +4,7 @@ require 'yaml'
 module Yahoo
   module Groups
     # example usage:
-    #   yr = Yahoo::Config( my_yaml_file )
+    #   yr = Yahoo::Groups::Runner( my_yaml_file )
     #   (1..10000).each {|id| yr.process_message( id ) }
     #
     # also:
