@@ -14,13 +14,13 @@ require 'yahoo/groups/parse/reprocess'
 require 'yahoo/groups/runner'
 
 # process the group topic info
-require 'yahoo/topics/topic_finder'
+require 'yahoo/topics/finder'
 require 'yahoo/topics/runner'
 
 # process the message content
-require 'yahoo/content/content_finder'
+require 'yahoo/content/finder'
+require 'yahoo/content/runner'
 require 'yahoo/content/parse/amplify'
 require 'yahoo/content/amplify'
 require 'yahoo/content/info_extraction'
-require 'yahoo/content/runner'
 
