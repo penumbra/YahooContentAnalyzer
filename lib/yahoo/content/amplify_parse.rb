@@ -1,7 +1,7 @@
 module Yahoo
   module Content
     # methods of extracting data from Amplify XML result doc
-    class AmplifyParse
+    class Amplify
       def self.top_topics( doc )
         doc.xpath("//TopTopics/TopicResult")
       end

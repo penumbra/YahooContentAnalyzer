@@ -5,8 +5,6 @@ require 'uri'
 module Yahoo
   module Content
     class Amplify
-      include Yahoo::Content::AmplifyParse
-
       ApiPort= 8180
       ApiHost= 'portaltnx20.openamplify.com'
       ApiPath= '/AmplifyWeb_v20/AmplifyThis'
