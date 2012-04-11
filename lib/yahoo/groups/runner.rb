@@ -37,9 +37,8 @@ module Yahoo
 
       # reprocess html files that were 'unavailable' due to group limits having been reached
       def reprocess_messages
-        reproc = Yahoo::Groups::ParseReprocess.new( @reprocess_file )
-
-        reproc.ids.each do |id|
+        fn = File::join(@data_path, @reprocess_file )
+        Parse::Reprocess.new( fn ).ids.each do  |id|
           process_message( id )
         end
       end
