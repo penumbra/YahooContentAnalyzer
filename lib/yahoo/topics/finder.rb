@@ -8,8 +8,8 @@ module Yahoo
     class Finder < Yahoo::Finder
       GroupTopicXPath = "//td[@class='ygrp-topic-title entry-title']"
 
-      def self.find( fn )
-        find( fn, GroupTopicXPath )
+      def self.find( fn, xpath = GroupTopicXPath )
+        find( fn, xpath )
       end
     end
   end

@@ -8,8 +8,8 @@ module Yahoo
     class Finder < Yahoo::Finder
       GroupContentXPath = "//div[@class='msgarea entry-content']"
 
-      def self.find( fn )
-        find( fn, GroupContentXPath )
+      def self.find( fn, xpath = GroupContentXPath )
+        find( fn, xpath )
       end
     end
   end
