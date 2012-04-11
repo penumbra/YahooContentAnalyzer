@@ -4,7 +4,7 @@ require 'yaml'
 # browse web as Mechanized client
 require 'browse'
 
-require 'yahoo/runner'
+require 'yahoo/config'
 require 'yahoo/finder'
 require 'yahoo/file_utils'
 

@@ -1,6 +1,6 @@
 module Yahoo
   module Content
-    class Runner < Yahoo::Runner
+    class Runner < Yahoo::Config
       # File search path expression to find downloaded html files across folders
       SearchExpression = '**/message-*.html'
 

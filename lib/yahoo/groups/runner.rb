@@ -4,13 +4,13 @@ require 'yaml'
 module Yahoo
   module Groups
     # example usage:
-    #   yr = Yahoo::Runner( my_yaml_file )
+    #   yr = Yahoo::Config( my_yaml_file )
     #   (1..10000).each {|id| yr.process_message( id ) }
     #
     # also:
     #   details on how to activate the reprocessing feature may be
-    #   found in parse_reprocess.rb
-    class Runner < Yahoo::Runner
+    #   found in Yahoo::Groups::Parse::Reprocess class
+    class Runner < Yahoo::Config
       # wait 5 seconds so as to not cause a denial of service exception
       WaitSeconds = 5
 

@@ -1,5 +1,5 @@
 module Yahoo
-  class Runner
+  class Config
     # Tag used in@ YAML file to identify the Yahoo configuration block
     YahooConfigTag = 'yahoo'
 
