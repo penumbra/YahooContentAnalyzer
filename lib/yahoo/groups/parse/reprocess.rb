@@ -10,20 +10,22 @@
 #
 module Yahoo
   module Groups
-    class ParseReprocess
-      attr_reader :ids
+      module Parse
+        class Reprocess
+          attr_reader :ids
 
-      def initialize( reprocess_fn )
-        f = File.open( reprocess_fn )
+          def initialize( reprocess_fn )
+            f = File.open( reprocess_fn )
 
-        @ids = []
-        f.lines.each do |line|
-          val =  line[8..12]
-          @ids << val
+            @ids = []
+            f.lines.each do |line|
+              val =  line[8..12]
+              @ids << val
+            end
+
+            f.close
+          end
         end
-
-        f.close
       end
-    end
   end
 end
