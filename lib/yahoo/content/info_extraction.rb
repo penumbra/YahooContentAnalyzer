@@ -16,12 +16,12 @@ module Yahoo
         # perform information extraction using Open Amplify API
         doc = @amplify.analyze_message( msg )
 
-        save( doc, id )
+        save_results( doc, id )
 
-        parse_results_xml( doc )
+        show_results( doc )
       end
 
-      def parse_results_xml( doc )
+      def show_results( doc )
         @amplify.parse( Amplify::top_topics( doc ) ) do |tn, weight, values|
           puts "[Top Topics => #{tn}, weight => #{weight}]"
           values.each {|val| val.each {|k,v| puts "#{k}=>#{v}"}}
@@ -33,7 +33,7 @@ module Yahoo
         end
       end
 
-      def save( nokogiri_doc, id )
+      def save_results( nokogiri_doc, id )
         fn = File::join( @data_path, id.sub('html', 'xml') )
         f = File.open(fn, 'w')
 
