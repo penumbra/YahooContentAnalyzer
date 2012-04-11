@@ -34,7 +34,7 @@ module Yahoo
         doc.xpath("//ProperNouns/TopicResult")
       end
 
-      def parse( topic_results )
+      def self.parse( topic_results )
         return if topic_results == nil
 
         topic_results.each do |topic_result|
@@ -42,13 +42,13 @@ module Yahoo
           weight = topic_result.search("Topic/Value/text()").to_s
 
           # find NamedEntityType/Result info
-          values = get_named_entities( topic_result )
+          values = self.get_named_entities( topic_result )
           yield( tn, weight, values )
         end
       end
 
       # returns an array of named entity information as hashes
-      def get_named_entities( topic_result )
+      def self.get_named_entities( topic_result )
         result = []
 
         # check NamedEntityType within each topic

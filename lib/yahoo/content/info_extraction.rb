@@ -22,12 +22,12 @@ module Yahoo
       end
 
       def show_results( doc )
-        @amplify.parse( Amplify::top_topics( doc ) ) do |tn, weight, values|
+        Amplify::parse( Amplify::top_topics( doc ) ) do |tn, weight, values|
           puts "[Top Topics => #{tn}, weight => #{weight}]"
           values.each {|val| val.each {|k,v| puts "#{k}=>#{v}"}}
         end
 
-        @amplify.parse( Amplify::proper_nouns( doc ) ) do |tn, weight, values|
+        Amplify::parse( Amplify::proper_nouns( doc ) ) do |tn, weight, values|
           puts "[Proper Noun => #{tn}, weight => #{weight}]"
           values.each {|val| val.each {|k,v| puts "#{k}=>#{v}"}}
         end
