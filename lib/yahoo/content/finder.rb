@@ -4,11 +4,11 @@ require 'nokogiri'
 
 module Yahoo
   module Content
-    # scan a folder of html files to extract the message content
-    class ContentFinder < Yahoo::Finder
+    # located an element by xpath within a specified HTML document
+    class Finder < Yahoo::Finder
       GroupContentXPath = "//div[@class='msgarea entry-content']"
 
-      def self.find_message( fn )
+      def self.find( fn )
         find( fn, GroupContentXPath )
       end
     end

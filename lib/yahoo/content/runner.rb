@@ -25,7 +25,7 @@ module Yahoo
           if count == @idx
             id = get_id( entry )
             puts "processing #{id}"
-            @ie.extract( id, Yahoo::Content::ContentFinder.find_message( entry ) )
+            @ie.extract( id, Yahoo::Content::Finder.find( entry ) )
             return # exit
           end
        end
