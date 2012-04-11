@@ -9,22 +9,26 @@ module Yahoo
       def initialize( yahoo_yml )
         super( yahoo_yml )
 
-        @ie = Yahoo::Content::InfoExtraction.new
-        @count = 0
+        @ie = Yahoo::Content::InfoExtraction.new( yahoo_yml )
+
+        @idx = Random.rand(1..30000)
       end
 
       # find the message-#####.html files and add the topic name to @topics
       def process_messages
-        file_entries = Dir.glob( File.join( @data_path, SearchExpression ) )
+        count = 0; file_entries = Dir.glob( File.join( @data_path, SearchExpression ) )
 
         file_entries.sort.each do |entry|
-          @count += 1
+          count += 1
 
-          @ie.extract( get_id( entry), Yahoo::Content::ContentFinder.find_message( entry ) )
-
-          # debug
-          return if @count > 3
-        end
+          # newsgroup topic "Codex", message id=21753
+          if count == @idx
+            id = get_id( entry )
+            puts "processing #{id}"
+            @ie.extract( id, Yahoo::Content::ContentFinder.find_message( entry ) )
+            return # exit
+          end
+       end
       end
 
       # relies on the construct from Yahoo::Groups module where downloaded files
