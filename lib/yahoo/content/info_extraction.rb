@@ -7,7 +7,7 @@ module Yahoo
       def initialize( yahoo_yml )
         prop = YAML::load_file( yahoo_yml )
 
-        @output_path = prop[Yahoo::Runner::YahooConfigTag]['output_path']
+        @output_path = prop[Yahoo::Runner::AppConfigTag]['output_path']
 
         @amplify = Yahoo::Content::Amplify.new( yahoo_yml )
       end
