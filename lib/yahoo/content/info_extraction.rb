@@ -5,8 +5,6 @@ module Yahoo
       attr_reader :content
 
       def initialize( yahoo_yml )
-        @content = Hash.new
-
         prop = YAML::load_file( yahoo_yml )
 
         @data_path = prop[Yahoo::Runner::YahooConfigTag]['data_path']
@@ -15,9 +13,6 @@ module Yahoo
       end
 
       def extract( id, msg )
-        # add to a hash containing of all message content
-        @content[id] = msg
-
         # perform information extraction using Open Amplify API
         doc = @amplify.analyze_message( msg )
 
@@ -37,13 +32,10 @@ module Yahoo
         ttr.each do |topic_result|
           tn = topic_result.search("Topic/Name/text()").to_s
           weight = topic_result.search("Topic/Value/text()").to_s
-
           puts "[#{desc} => #{tn}, weight => #{weight}]"
 
           # add the named entities to the @results[key=tn] => array
-          values = []
-          values += get_named_entities( topic_result )
-
+          values = get_named_entities( topic_result )
           values.each {|val| val.each {|k,v| puts "#{k}=>#{v}"}}
         end
       end
