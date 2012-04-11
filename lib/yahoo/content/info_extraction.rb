@@ -30,7 +30,7 @@ module Yahoo
         show_results( doc.xpath("//TopTopics/TopicResult"), 'top topic' )
         show_results( doc.xpath("//ProperNouns/TopicResult"), 'proper noun' )
       end
-                                                                                         topic
+
       def show_results( ttr, desc )
         return if ttr == nil
 
