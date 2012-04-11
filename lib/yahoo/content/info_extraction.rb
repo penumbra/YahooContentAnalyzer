@@ -22,37 +22,15 @@ module Yahoo
       end
 
       def parse_results_xml( doc )
-        show_results( doc.xpath("//TopTopics/TopicResult"), 'top topic' )
-        show_results( doc.xpath("//ProperNouns/TopicResult"), 'proper noun' )
-      end
-
-      def show_results( ttr, desc )
-        return if ttr == nil
-
-        ttr.each do |topic_result|
-          tn = topic_result.search("Topic/Name/text()").to_s
-          weight = topic_result.search("Topic/Value/text()").to_s
-          puts "[#{desc} => #{tn}, weight => #{weight}]"
-
-          # add the named entities to the @results[key=tn] => array
-          values = get_named_entities( topic_result )
+        @amplify.parse( Amplify::top_topics( doc ) ) do |tn, weight, values|
+          puts "[Top Topics => #{tn}, weight => #{weight}]"
           values.each {|val| val.each {|k,v| puts "#{k}=>#{v}"}}
         end
-      end
 
-      # returns an array of named entity information as hashes
-      def get_named_entities( topic_result )
-        result = []
-
-        # check NamedEntityType within each topic
-        entities = topic_result.search('NamedEntityType/Result')
-
-        entities.each do |entity|
-          result << {:entity => entity.search('Name/text()').to_s,
-                     :value => entity.search('Value/text()').to_s }
+        @amplify.parse( Amplify::proper_nouns( doc ) ) do |tn, weight, values|
+          puts "[Proper Noun => #{tn}, weight => #{weight}]"
+          values.each {|val| val.each {|k,v| puts "#{k}=>#{v}"}}
         end
-
-        result
       end
 
       def save( nokogiri_doc, id )
