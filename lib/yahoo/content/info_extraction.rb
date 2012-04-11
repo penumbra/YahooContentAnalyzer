@@ -27,15 +27,18 @@ module Yahoo
       end
 
       def parse_results_xml( doc )
-        topic_results = doc.xpath("//TopicResult")
+        show_results( doc.xpath("//TopTopics/TopicResult"), 'top topic' )
+        show_results( doc.xpath("//ProperNouns/TopicResult"), 'proper noun' )
+      end
+                                                                                         topic
+      def show_results( ttr, desc )
+        return if ttr == nil
 
-        return if topic_results == nil
-
-        topic_results.each do |topic_result|
+        ttr.each do |topic_result|
           tn = topic_result.search("Topic/Name/text()").to_s
           weight = topic_result.search("Topic/Value/text()").to_s
 
-          puts "[topic => #{tn}, weight => #{weight}]"
+          puts "[#{desc} => #{tn}, weight => #{weight}]"
 
           # add the named entities to the @results[key=tn] => array
           values = []
@@ -61,7 +64,7 @@ module Yahoo
       end
 
       def save( nokogiri_doc, id )
-        fn = File::join( @data_path, 'message-' + id + '.xml')
+        fn = File::join( @data_path, id.sub('html', 'xml') )
         f = File.open(fn, 'w')
 
         nokogiri_doc.write_to( f, :indent => 2 )
