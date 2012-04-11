@@ -9,7 +9,7 @@ module Yahoo
       GroupContentXPath = "//div[@class='msgarea entry-content']"
 
       def self.find( fn, xpath = GroupContentXPath )
-        find( fn, xpath )
+        super( fn, xpath )
       end
     end
   end

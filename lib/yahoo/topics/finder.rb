@@ -9,7 +9,7 @@ module Yahoo
       GroupTopicXPath = "//td[@class='ygrp-topic-title entry-title']"
 
       def self.find( fn, xpath = GroupTopicXPath )
-        find( fn, xpath )
+        super( fn, xpath )
       end
     end
   end
