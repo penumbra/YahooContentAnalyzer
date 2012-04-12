@@ -12,16 +12,18 @@ module Yahoo
 
       attr_reader :agent
 
-      def initialize
+      def initialize( username, password )
         @agent = Mechanize.new
 
         @agent.follow_meta_refresh = true
         @agent.user_agent_alias = BrowserType
         @agent.idle_timeout = 10  # seconds
+
+        # use the Mechanize agent (@agent) to log into Yahoo
+        login( username, password )
       end
 
-      # use the Mechanize agent (@agent) to log into Yahoo
-      def yahoo( username, password )
+      def login( username, password )
         login_form = @agent.get( YahooLoginUrl ).form( YahooLoginForm )
 
         # basic authentication parameters

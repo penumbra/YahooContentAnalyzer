@@ -10,9 +10,7 @@ module Yahoo
       attr_reader :yahoo_page
 
       def initialize( username, password )
-        @login = Yahoo::Groups::Login.new
-
-        @login.yahoo( username, password )
+        @login = Yahoo::Groups::Login.new( username, password )
 
         @yahoo_page = Browse::Content.new( @login.agent )
       end
