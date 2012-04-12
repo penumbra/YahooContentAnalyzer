@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'mechanize'
 require 'yaml'
 
 # browse web as Mechanized client
@@ -9,6 +10,7 @@ require 'yahoo/finder'
 require 'yahoo/file_utils'
 
 # browse Yahoo Newsgroup
+require 'yahoo/groups/login'
 require 'yahoo/groups/reader'
 require 'yahoo/groups/parse/reprocess'
 require 'yahoo/groups/runner'

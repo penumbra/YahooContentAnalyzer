@@ -4,19 +4,15 @@
 module Yahoo
   module Groups
     class Reader
-      YahooLogin = 'https://login.yahoo.com/config/login'
       YahooGroups = 'http://groups.yahoo.com'
 
-      attr_reader :url
       attr_reader :login
       attr_reader :yahoo_page
 
       def initialize( username, password )
-        @url = YahooLogin
+        @login = Yahoo::Groups::Login.new
 
-        @login = Browse::Login.new( @url )
         @login.yahoo( username, password )
-        puts "yahoo login successful..."
 
         @yahoo_page = Browse::Content.new( @login.agent )
       end
