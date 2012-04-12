@@ -5,7 +5,10 @@ module Yahoo
   module Groups
     class Login
       BrowserType = 'Mac Safari'
-      YahooLogin = 'https://login.yahoo.com/config/login'
+      YahooLoginUrl = 'https://login.yahoo.com/config/login'
+
+      # form name is found within the Yahoo login page
+      YahooLoginForm = 'login_form'
 
       attr_reader :agent
 
@@ -19,11 +22,7 @@ module Yahoo
 
       # use the Mechanize agent (@agent) to log into Yahoo
       def yahoo( username, password )
-        # form name is found within the Yahoo login page
-        form_name = 'login_form'
-
-        # @url set by Object owner (e.g. YahooLogin)
-        login_form = @agent.get( YahooLogin ).form( form_name )
+        login_form = @agent.get( YahooLoginUrl ).form( YahooLoginForm )
 
         # basic authentication parameters
         login_form.login = username
