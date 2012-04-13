@@ -22,10 +22,7 @@ module Yahoo
           f.close
         end
 
-        #
-        # example html node for xpath "//noscript/a"
-        # /group/SynchronicityPhenomena/message/1340?threaded=1&var=1&l=1&p=16
-        #
+        # use regex to compile an array of related message id's
         def get_ids( html )
           ids = []
           node_list = html.xpath( MessageLinks )
