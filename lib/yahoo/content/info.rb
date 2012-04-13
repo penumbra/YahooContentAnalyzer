@@ -1,24 +1,22 @@
 module Yahoo
   module Content
-    class InfoExtraction
+    class Info < Yahoo::Config
       attr_reader :amplify
       attr_reader :content
 
       def initialize( yahoo_yml )
-        prop = YAML::load_file( yahoo_yml )
-
-        @output_path = prop[Yahoo::Runner::AppConfigTag]['output_path']
+        super( yahoo_yml )
 
         @amplify = Yahoo::Content::Amplify.new( yahoo_yml )
       end
 
-      def extract( id, msg )
+      def extract( id, msg, save = true)
         # perform information extraction using Open Amplify API
         doc = @amplify.analyze_message( msg )
 
-        save_results( doc, id )
+        save_results( doc, id ) if save
 
-        show_results( doc )
+        doc
       end
 
       def show_results( doc )
@@ -33,11 +31,11 @@ module Yahoo
         end
       end
 
-      def save_results( nokogiri_doc, id )
+      def save_results( doc, id )
         fn = File::join( @output_path, id.sub('html', 'xml') )
         f = File.open(fn, 'w')
 
-        nokogiri_doc.write_to( f, :indent => 2 )
+        doc.write_to( f, :indent => 2 )
 
         f.close
       end

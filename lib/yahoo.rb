@@ -23,6 +23,7 @@ require 'yahoo/topics/runner'
 require 'yahoo/content/finder'
 require 'yahoo/content/runner'
 require 'yahoo/content/parse/amplify'
+require 'yahoo/content/parse/links'
 require 'yahoo/content/amplify'
-require 'yahoo/content/info_extraction'
+require 'yahoo/content/info'
 

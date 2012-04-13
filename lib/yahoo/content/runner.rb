@@ -9,7 +9,7 @@ module Yahoo
       def initialize( yahoo_yml )
         super( yahoo_yml )
 
-        @ie = Yahoo::Content::InfoExtraction.new( yahoo_yml )
+        @ie = Yahoo::Content::Info.new( yahoo_yml )
 
         @idx = Random.rand(1..30000)
       end
@@ -24,8 +24,13 @@ module Yahoo
           # newsgroup topic "Codex", message id=21753
           if count == @idx
             id = get_id( entry )
+
             puts "processing #{id}"
-            @ie.extract( id, Yahoo::Content::Finder.find( entry ) )
+            doc = @ie.extract( id, Yahoo::Content::Finder.find( entry ) )
+
+            puts "---"
+            @ie.show_results( doc )
+
             return # exit
           end
        end
