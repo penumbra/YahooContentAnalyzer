@@ -22,14 +22,12 @@ module Yahoo
           count += 1
 
           if count == @idx
-            id = get_id( entry )
-
             # send the message content to information extraction
             @ie.extract( Yahoo::Content::Parse::FindContent.find( entry ) )
 
             @ie.to_s
 
-            save_results( @ie.doc, id )
+            save_results( @ie.doc, get_id( entry ) )
             return # exit
           end
         end
