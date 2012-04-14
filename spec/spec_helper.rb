@@ -6,8 +6,8 @@ $LOAD_PATH << File.expand_path('../../lib', __FILE__) << '.'
 require 'yahoo'
 
 BasePath = '/projects/yahoo'
-OutPath = File::Join( BasePath, 'out' )
-DataPath = File::Join( BasePath, 'data' )
+OutPath = File.join( BasePath, 'out' )
+DataPath = File.join( BasePath, 'data' )
 
-SampleHtml = File::Join( OutPath, 'message-01296.html' )
-Yahoo_Yml = File::Join( BasePath, 'yahoo_secret.yml' )
+SampleHtml = File.join( OutPath, 'message-01296.html' )
+Yahoo_Yml = File.join( BasePath, 'yahoo_secret.yml' )
