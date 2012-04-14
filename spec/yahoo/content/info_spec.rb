@@ -15,7 +15,7 @@ module Yahoo
 
       describe "#extract" do
         it "should have a top topic of dream with a weight of 20.00" do
-          doc = info.extract( SampleId, msg, false )
+          doc = info.extract( msg )
 
           Parse::Amplify::parse( Parse::Amplify::top_topics( doc ) ) do |tn, wt, vals|
             tn.should == "dream"
