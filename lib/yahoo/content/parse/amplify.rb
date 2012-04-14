@@ -3,7 +3,7 @@ module Yahoo
     module Parse
       # methods of extracting data from Amplify XML result doc
       class Amplify
-        TopTopicXPath = "//TopTopics/TopicResult"
+        TopTopicsXPath = "//TopTopics/TopicResult"
         ProperNounsXPath = "//ProperNouns/TopicResult"
         NamedEntityXPath = 'NamedEntityType/Result'
 

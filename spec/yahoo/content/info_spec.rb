@@ -1,11 +1,10 @@
-require 'rspec'
-require 'yahoo'
+require 'spec_helper'
 
 module Yahoo
   module Content
     describe Info do
       let(:info) do
-         info = Info.new( Yahoo_Yml )
+         info = Info.new( Yahoo_Yml  )
       end
 
       let (:msg) do
