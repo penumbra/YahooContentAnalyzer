@@ -6,7 +6,7 @@ module Yahoo
   module Content
     module Parse
       # located an element by xpath within a specified HTML document
-      class FindContent < Yahoo::Finder
+      class FindContent < Yahoo::Shared::Finder
         GroupContentXPath = "//div[@class='msgarea entry-content']"
 
         def self.find( fn, xpath = GroupContentXPath )

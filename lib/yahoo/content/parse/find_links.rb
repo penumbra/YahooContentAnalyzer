@@ -5,7 +5,7 @@ require 'nokogiri'
 module Yahoo
   module Content
     # located an element by xpath within a specified HTML document
-    class FindLinks < Yahoo::Finder
+    class FindLinks < Yahoo::Shared::Finder
       MessageLinks = "//noscript/a"
 
       # <a href="/group/SynchronicityPhenomena/message/1336?threaded=1&var=1&l=1&p=15">

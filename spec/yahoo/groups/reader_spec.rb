@@ -1,19 +1,22 @@
 require 'spec_helper'
 
 module Yahoo
-  class Config
-    def login_id
-      @login_id
-    end
-    def password
-      @password
-    end
-    def group_name
-      @group_name
+  module Shared
+    class Config
+      def login_id
+        @login_id
+      end
+      def password
+        @password
+      end
+      def group_name
+        @group_name
+      end
     end
   end
 
   module Groups
+    YahooGroupNameXPath = "//span[@class='ygrp-pname']"
 
     describe Reader do
       let(:config) do

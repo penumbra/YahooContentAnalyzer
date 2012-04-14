@@ -1,6 +1,12 @@
 module Yahoo
   module Content
-    class Runner < Yahoo::Config
+    #
+    # This is a work-in-progress.
+    #
+    # Presently, it performs information extraction on
+    # one of 30,000 messages
+    #
+    class Runner < Yahoo::Shared::Config
       # File search path expression to find downloaded html files across folders
       SearchExpression = '**/message-*.html'
 

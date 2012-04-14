@@ -5,19 +5,19 @@ module Yahoo
   module Groups
     # example usage:
     #   yr = Yahoo::Groups::Runner( my_yaml_file )
-    #   (1..10000).each {|id| yr.process_message( id ) }
+    #   (1..1000).each {|id| yr.process_message( id ) }
     #
     # also:
     #   details on how to activate the reprocessing feature may be
     #   found in Yahoo::Groups::Parse::Reprocess class
-    class Runner < Yahoo::Config
+    class Runner < Yahoo::Shared::Config
       # wait 5 seconds so as to not cause a denial of service exception
       WaitSeconds = 5
 
       def initialize( yahoo_yml )
         super( yahoo_yml )
 
-        # use YahooGroups class to login to Yahoo
+        # use Yahoo::Groups::Login class to login to Yahoo
         @yahoo = Yahoo::Groups::Reader.new( @login_id, @password )
 
         # open the main page of the user-specified group

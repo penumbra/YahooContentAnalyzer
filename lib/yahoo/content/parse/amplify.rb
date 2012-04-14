@@ -3,12 +3,16 @@ module Yahoo
     module Parse
       # methods of extracting data from Amplify XML result doc
       class Amplify
+        TopTopicXPath = "//TopTopics/TopicResult"
+        ProperNounsXPath = "//ProperNouns/TopicResult"
+        NamedEntityXPath = 'NamedEntityType/Result'
+
         def self.top_topics( doc )
-          doc.xpath("//TopTopics/TopicResult")
+          doc.xpath( TopTopicsXPath )
         end
 
         def self.proper_nouns( doc )
-          doc.xpath("//ProperNouns/TopicResult")
+          doc.xpath( ProperNounsXPath )
         end
 
         def self.parse( topic_results )
@@ -29,7 +33,7 @@ module Yahoo
           result = []
 
           # check NamedEntityType within each topic
-          entities = topic_result.search('NamedEntityType/Result')
+          entities = topic_result.search( NamedEntityXPath )
 
           entities.each do |entity|
             result << {:entity => entity.search('Name/text()').to_s,

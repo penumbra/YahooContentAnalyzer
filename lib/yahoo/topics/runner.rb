@@ -2,7 +2,7 @@ module Yahoo
   module Topics
     # usage:
     #   tr = Topics::Runner( my_yaml_file )
-    class Runner < Yahoo::Config
+    class Runner < Yahoo::Shared::Config
       # File search path expression to find downloaded html files across folders
       SearchExpression = '**/message-*.html'
 

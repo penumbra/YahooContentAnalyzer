@@ -1,12 +1,14 @@
 require 'spec_helper'
 
 module Yahoo
-  class Config
-    def login_id
-      @login_id
-    end
-    def password
-      @password
+  module Shared
+    class Config
+      def login_id
+        @login_id
+      end
+      def password
+        @password
+      end
     end
   end
 

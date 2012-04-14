@@ -6,7 +6,7 @@ module Yahoo
   module Topics
     module Parse
       # locate a specific element by xpath within the specified HTML document
-      class FindTopic < Yahoo::Finder
+      class FindTopic < Yahoo::Shared::Finder
         GroupTopicXPath = "//td[@class='ygrp-topic-title entry-title']"
 
         def self.find( fn, xpath = GroupTopicXPath )
