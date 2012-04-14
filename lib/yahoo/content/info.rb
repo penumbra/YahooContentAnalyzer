@@ -31,6 +31,8 @@ module Yahoo
         end
       end
 
+      # id=message-#####.html
+      # save => @output_path/message-#####.xml
       def save_results( doc, id )
         fn = File::join( @output_path, id.sub('html', 'xml') )
         f = File.open(fn, 'w')

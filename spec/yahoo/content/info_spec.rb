@@ -10,7 +10,7 @@ module Yahoo
 
       let (:msg) do
         # use the Content::Finder to locate the message body
-        msg = FindContent.find( SampleHtml )
+        msg = Parse::FindContent.find( SampleHtml )
       end
 
       describe "#extract" do

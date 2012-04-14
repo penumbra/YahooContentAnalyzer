@@ -4,10 +4,7 @@ module Yahoo
       f = File.open( fn )
       html = Nokogiri::HTML( f )
 
-      node = html.xpath(xpath)
-
-      # result is returned to caller as text
-      node.text
+      html.xpath( xpath )
     rescue Exception => ex
       puts "Error with file #{fn} - #{ex}"
       nil  # nil result returned

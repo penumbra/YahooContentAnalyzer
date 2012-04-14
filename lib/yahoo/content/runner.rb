@@ -26,7 +26,7 @@ module Yahoo
             id = get_id( entry )
 
             puts "processing #{id}"
-            doc = @ie.extract( id, Yahoo::Content::Finder.find( entry ) )
+            doc = @ie.extract( id, Yahoo::Content::Parse::Finder.find( entry ) )
 
             puts "---"
             @ie.show_results( doc )
