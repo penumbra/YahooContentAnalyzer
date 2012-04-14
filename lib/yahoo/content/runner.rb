@@ -14,19 +14,18 @@ module Yahoo
         @idx = Random.rand(1..30000)
       end
 
-      # find the message-#####.html files and add the topic name to @topics
+      # scan the @data_path folder for message-#####.html file
       def process_messages
         count = 0; file_entries = Dir.glob( File.join( @data_path, SearchExpression ) )
 
         file_entries.sort.each do |entry|
           count += 1
 
-          # newsgroup topic "Codex", message id=21753
           if count == @idx
             id = get_id( entry )
 
-            puts "processing #{id}"
-            doc = @ie.extract( id, Yahoo::Content::Parse::Finder.find( entry ) )
+            # send the message content to information extraction
+            doc = @ie.extract( id, Yahoo::Content::Parse::FindContent.find( entry ) )
 
             puts "---"
             @ie.show_results( doc )
@@ -39,10 +38,11 @@ module Yahoo
       # relies on the construct from Yahoo::Groups module where downloaded files
       # are called 'message-#####.html'
       def get_id( entry )
-        idx = entry =~ /message-[0-9]/
-        max = entry.size - 1
+        entry =~ /(message-\d*)/
+        match = $~
 
-        entry[idx..max]
+        # get the numeric part only
+        id = match.string[match.begin(0) .. match.end(0)-1]
       end
     end
   end
