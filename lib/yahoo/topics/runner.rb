@@ -20,7 +20,7 @@ module Yahoo
 
         entries.sort.each do |entry|
           puts "processing #{entry}"
-          @topics << Yahoo::Topics::Finder.find( entry )
+          @topics << Yahoo::Topics::Parse::FindTopic.find( entry )
         end
       end
 
