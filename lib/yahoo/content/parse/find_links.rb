@@ -14,7 +14,6 @@ module Yahoo
       def self.find( fn, xpath = MessageLinks )
         node_list = super( fn, xpath )
 
-        puts "here"
         # return an array of id's representing other messages in the newsgroup thread
         get_ids( node_list )
       end
