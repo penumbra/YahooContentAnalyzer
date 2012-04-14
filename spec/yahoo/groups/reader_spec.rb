@@ -20,7 +20,7 @@ module Yahoo
 
     describe Reader do
       let(:config) do
-        config = Yahoo::Config.new( Yahoo_Yml )
+        config = Yahoo::Shared::Config.new( Yahoo_Yml )
       end
 
       let(:username) do
