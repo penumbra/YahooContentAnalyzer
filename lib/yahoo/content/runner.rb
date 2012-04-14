@@ -25,14 +25,24 @@ module Yahoo
             id = get_id( entry )
 
             # send the message content to information extraction
-            doc = @ie.extract( id, Yahoo::Content::Parse::FindContent.find( entry ) )
+            @ie.extract( Yahoo::Content::Parse::FindContent.find( entry ) )
 
-            puts "---"
-            @ie.show_results( doc )
+            @ie.to_s
 
+            save_results( @ie.doc, id )
             return # exit
           end
-       end
+        end
+      end
+
+      # save Nokogiri::XML doc => @output_path/message-#####.xml
+      def save_results( doc, id )
+        fn = File::join( @output_path, id.sub('html', 'xml') )
+        f = File.open(fn, 'w')
+
+        doc.write_to( f, :indent => 2 )
+
+        f.close
       end
 
       # relies on the construct from Yahoo::Groups module where downloaded files
@@ -42,7 +52,7 @@ module Yahoo
         match = $~
 
         # get the numeric part only
-        id = match.string[match.begin(0) .. match.end(0)-1]
+        match.string[match.begin(0) .. match.end(0)-1]
       end
     end
   end
