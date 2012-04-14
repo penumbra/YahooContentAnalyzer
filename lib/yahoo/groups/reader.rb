@@ -17,11 +17,16 @@ module Yahoo
 
       # console list of groups associated with the current yahoo account
       def list_groups
+        list = []
+
         @yahoo_page.get_links_at( YahooGroups ).each do |link|
           if link.href =~ /^\/group/
-            puts "link => #{link.text}"
+            puts "#{link.text}"
+            list << link.text
           end
         end
+
+        list
       end
 
       # returns html page or nil if page is not found

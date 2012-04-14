@@ -14,6 +14,7 @@ module Yahoo
   end
 
   module Groups
+
     describe Reader do
       let(:config) do
         config = Yahoo::Config.new( Yahoo_Yml )
@@ -43,6 +44,21 @@ module Yahoo
 
           list[0].start_with?( group_name[0..5] ).should == true
         end
+      end
+
+      describe "#select_group" do
+        it "should select a Yahoo group" do
+          html = reader.select_group( group_name )
+
+          get_group_name( html ).should == group_name
+        end
+      end
+
+      # find this node in the html doc
+      # <span class="ygrp-pname">SynchronicityPhenomena</span>
+      def get_group_name( html )
+        node = Nokogiri::HTML( html ).xpath( YahooGroupNameXPath )
+        node.text
       end
     end
   end
