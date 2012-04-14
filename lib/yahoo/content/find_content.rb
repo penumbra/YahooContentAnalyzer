@@ -5,11 +5,13 @@ require 'nokogiri'
 module Yahoo
   module Content
     # located an element by xpath within a specified HTML document
-    class Finder < Yahoo::Finder
+    class FindContent < Yahoo::Finder
       GroupContentXPath = "//div[@class='msgarea entry-content']"
 
       def self.find( fn, xpath = GroupContentXPath )
-        super( fn, xpath )
+        node = super( fn, xpath )
+
+        node.text
       end
     end
   end
