@@ -16,9 +16,9 @@ module Yahoo
       end
 
       def self.make_data_dir( path )
-        FileUtils::mkdir( path )
-      rescue
-        # already exists
+        ::FileUtils::mkdir( path )
+      rescue Exception => ex
+        puts "exception #{ex}"
       end
     end
   end
