@@ -1,6 +1,6 @@
 module Yahoo
   module Content
-    class Info < Yahoo::Config
+    class Info < Yahoo::Shared::Config
       attr_reader :amplify
       attr_reader :content
       attr_reader :doc
