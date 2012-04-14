@@ -20,10 +20,10 @@ require 'yahoo/topics/finder'
 require 'yahoo/topics/runner'
 
 # process the message content
-require 'yahoo/content/finder'
+require 'yahoo/content/find_content'
+require 'yahoo/content/find_links'
 require 'yahoo/content/runner'
 require 'yahoo/content/parse/amplify'
-require 'yahoo/content/parse/links'
 require 'yahoo/content/amplify'
 require 'yahoo/content/info'
 
