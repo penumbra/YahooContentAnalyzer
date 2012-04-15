@@ -31,11 +31,22 @@ module Yahoo
             # send the message content to information extraction
             @ie.extract( Yahoo::Content::Parse::FindContent.find( entry ) )
 
+            save_results( @ie.doc, get_id( entry ) )
+
+            # show info extraction and id's of other messages in the thead
             @ie.to_s
 
-            save_results( @ie.doc, get_id( entry ) )
+            show_linked_messages( FindLinks.find( entry ) )
             return # exit
           end
+        end
+      end
+
+      def show_linked_messages( email_links )
+        if email_links
+          print "linked messages=>"
+          email_links.each {|t| print "#{t} "}
+          puts
         end
       end
 
