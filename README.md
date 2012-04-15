@@ -18,7 +18,9 @@ The OpenAmplify Web Service is the first and only of its kind. It exposes, via a
 * http://www.openamplify.com/technology
 
 ## Zemanta 
-Note, Zemanta does not provide a programmable interface
+Note, the Zemanta link for the programmable interface is here:
+
+* http://developer.zemanta.com/member/register/
 
 Zemanta's core technology is widely acclaimed as one of the best semantic recommendations engines on the market.
 
