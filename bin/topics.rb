@@ -5,8 +5,8 @@ $LOAD_PATH << lib_dir << '.'
 
 require 'yahoo'
 
-ConfigFile = '/projects/yahoo/yahoo_secret.yml'
-TopicsFile = '/projects/yahoo/data/topics.txt'
+ConfigFile = '/projects/yahoo/yahoo.yml'
+TopicsFile = 'topics.txt'
 
 tr = Yahoo::Topics::Runner.new( ConfigFile )
 
