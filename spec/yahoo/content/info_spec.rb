@@ -7,14 +7,9 @@ module Yahoo
          info = Info.new( Yahoo_Yml  )
       end
 
-      let (:msg) do
-        # use the Content::Finder to locate the message body
-        msg = Parse::FindContent.find( SampleHtml )
-      end
-
       describe "#analyze" do
         it "should have a top topic of dream with a weight of 20.00" do
-          info.analyze( msg )
+          info.analyze( SampleHtml )
 
           Parse::Amplify::parse_topics( info.amplify.doc ) do |tn, wt, vals|
             tn.should == "dream"
@@ -24,7 +19,7 @@ module Yahoo
         end
 
         it "should list keywords" do
-          info.analyze( msg )
+          info.analyze( SampleHtml )
 
           Parse::Zemanta::parse_keywords( info.zemanta.doc ) do |kw|
             kw.should == 'Lucid dream'
