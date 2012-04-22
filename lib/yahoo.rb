@@ -24,8 +24,10 @@ require 'yahoo/topics/runner'
 require 'yahoo/content/parse/find_content'
 require 'yahoo/content/parse/find_links'
 require 'yahoo/content/parse/amplify'
+require 'yahoo/content/parse/zemanta'
 
 # analyze the message content
+require 'yahoo/content/zemanta'
 require 'yahoo/content/amplify'
 require 'yahoo/content/info'
 require 'yahoo/content/runner'

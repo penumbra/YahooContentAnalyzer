@@ -29,9 +29,9 @@ module Yahoo
 
           if count == @idx
             # send the message content to information extraction
-            @ie.extract( Yahoo::Content::Parse::FindContent.find( entry ) )
+            @ie.analyze( Yahoo::Content::Parse::FindContent.find( entry ) )
 
-            save_results( @ie.doc, get_id( entry ) )
+            save_results( @ie.amplify.doc, get_id( entry ) )
 
             # show info extraction and id's of other messages in the thead
             @ie.to_s
