@@ -5,9 +5,9 @@ module Yahoo
       class Calais
         class << self
           def parse( doc )
-            puts "TODO"
+            puts "doc => #{doc.to_s}"
           end
-        end
+        end # self
       end # Calais
     end
   end
