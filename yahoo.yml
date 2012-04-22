@@ -16,3 +16,6 @@ open_amplify:
 
 open_calais:
   api_key: 'http://www.opencalais.com/'
+
+zemanta:
+  api_key: 'http://developer.zemanta.com'
