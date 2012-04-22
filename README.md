@@ -1,10 +1,30 @@
 # About
-MRI Ruby program for reading the contents of a Yahoo News Group
+MRI Ruby program for reading and analyzing the contents of a Yahoo News Group
 
 # Usage
 1. Update the configuration file 'yahoo.yml' to use your Yahoo login id, password, desired group name, etc
 2. Update the range of messages to be downloaded in bin/yahoo.rb
 3. Exec bin/yahoo.rb (e.g. Unix ./bin/yahoo.rb)
+
+# Semantic Web (Web 3.0)
+## What Is Web 3.0
+* Cade Metz, "Web 3.0", PC Magazine, March 14, 2007 - http://www.pcmag.com/article2/0,2817,2102852,00.asp
+
+"To many, Web 3.0 is something called the Semantic Web, a term coined by Tim Berners-Lee,
+the man who invented the (first) World Wide Web.  In essence, the Semantic Web is a place
+where machines can read Web pages much as we humans read them, a place where search engines
+and software agents can better troll the Net and find what we're looking for.
+
+"It's a set of standards that turns the Web into one big database," says Nova Spivack,
+CEO of Radar Networks, one of the leading voices of this new-age Internet.
+
+## Web 3.0 Books
+
+* Watson, Mark, "Practical Semantic Web and Linked Data Applications: Java, JRuby, Scala,
+and Clojure Edition", March 12, 2011 - http://www.markwatson.com/opencontent/book_java.pdf
+
+* Toby Segaran, Colin Evans, Jamie Taylor, "Programming the Semantic Web: Build Flexible Applications
+with Graph Data", O'Reilly Media, July 2009 - http://shop.oreilly.com/product/9780596153823.do
 
 # Analyzing the Newsgroup Content
 ## Open Calais
