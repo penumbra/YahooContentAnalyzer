@@ -19,9 +19,15 @@ module Yahoo
       # return the Open Amplify API response as Nokogiri XML Doc
       def analyze( msg )
         @request['text'] = msg
-        response = Net::HTTP.post_form(URI.parse( ApiHost ), @request )
+        response = Net::HTTP.post_form( URI.parse( ApiHost ), @request )
 
         @doc = Nokogiri::XML( response.read_body )
+      end
+
+      def to_s
+        Parse::Zemanta::parse_keywords( @doc ) do |kw|
+          puts "keyword = #{kw}"
+        end
       end
     end
   end

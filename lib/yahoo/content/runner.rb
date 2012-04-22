@@ -30,25 +30,12 @@ module Yahoo
           if count == @idx
             puts "MESSAGE ID #{@idx}"
 
-            # send the message content to information extraction
-            @ie.analyze( Yahoo::Content::Parse::FindContent.find( entry ) )
+            # information extraction
+            @ie.analyze( entry )
 
-            save_results( @ie.amplify.doc, get_id( entry ) )
-
-            # show info extraction and id's of other messages in the thead
             @ie.to_s
-
-            show_linked_messages( FindLinks.find( entry ) )
-            return # exit
+            return # short-circuit exit
           end
-        end
-      end
-
-      def show_linked_messages( email_links )
-        if email_links
-          print "linked messages=>"
-          email_links.each {|t| print "#{t} "}
-          puts
         end
       end
 

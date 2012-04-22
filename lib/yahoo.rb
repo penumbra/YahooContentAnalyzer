@@ -23,12 +23,19 @@ require 'yahoo/topics/runner'
 # parse the message content
 require 'yahoo/content/parse/find_content'
 require 'yahoo/content/parse/find_links'
-require 'yahoo/content/parse/amplify'
+require 'yahoo/content/parse/calais'
 require 'yahoo/content/parse/zemanta'
+require 'yahoo/content/parse/amplify'
 
-# analyze the message content
+# information extraction
+require 'yahoo/content/calais'
 require 'yahoo/content/zemanta'
 require 'yahoo/content/amplify'
+require 'yahoo/content/links'
+
+# IE wrapper
 require 'yahoo/content/info'
+
+# Runtime agent
 require 'yahoo/content/runner'
 

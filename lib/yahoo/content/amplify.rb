@@ -30,13 +30,13 @@ module Yahoo
 
       def to_s
         Parse::Amplify::parse_topics( doc ) do |tn, weight, values|
-          puts "[Top Topics => #{tn}, weight => #{weight}]"
-          values.each {|val| val.each {|k,v| puts "#{k}=>#{v}"}}
+          puts "[Top Topics => #{tn}, weight => #{weight}] => #{values}"
+          # values.each {|val| val.each {|k,v| puts "#{k}=>#{v}"}}
         end
 
         Parse::Amplify::parse_nouns( doc ) do |tn, weight, values|
-          puts "[Proper Noun => #{tn}, weight => #{weight}]"
-          values.each {|val| val.each {|k,v| puts "#{k}=>#{v}"}}
+          puts "[Proper Noun => #{tn}, weight => #{weight}] => #{values}"
+          # values.each {|val| val.each {|k,v| puts "#{k}=>#{v}"}}
         end
       end
     end
