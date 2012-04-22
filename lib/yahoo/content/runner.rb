@@ -28,6 +28,8 @@ module Yahoo
           count += 1
 
           if count == @idx
+            puts "MESSAGE ID #{@idx}"
+
             # send the message content to information extraction
             @ie.analyze( Yahoo::Content::Parse::FindContent.find( entry ) )
 
