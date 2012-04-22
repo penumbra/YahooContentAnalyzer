@@ -4,7 +4,7 @@ MRI Ruby program for reading and analyzing the contents of a Yahoo News Group
 # Usage
 1. Update the configuration file 'yahoo.yml' to use your Yahoo login id, password, desired group name, etc
 2. Update the range of messages to be downloaded in bin/yahoo.rb
-3. Exec bin/yahoo.rb (e.g. Unix ./bin/yahoo.rb)
+3. Exec bin/groups.rb (e.g. Unix ./bin/groups.rb)
 
 # Semantic Web (Web 3.0)
 ## What Is Web 3.0
@@ -26,8 +26,8 @@ and Clojure Edition", March 12, 2011 - http://www.markwatson.com/opencontent/boo
 * Toby Segaran, Colin Evans, Jamie Taylor, "Programming the Semantic Web: Build Flexible Applications
 with Graph Data", O'Reilly Media, July 2009 - http://shop.oreilly.com/product/9780596153823.do
 
-# Analyzing the Newsgroup Content
-## Open Calais
+## Web 3.0 Tools
+### Open Calais
 The OpenCalais Web Service automatically creates rich semantic metadata for the content you
 submit – in well under a second. Using natural language processing (NLP), machine
 learning and other methods, Calais analyzes your document and finds the entities within it.
@@ -36,7 +36,7 @@ hidden within your text as well.
 
 * http://www.opencalais.com/documentation/calais-web-service-api
 
-## Open Amplify 
+### Open Amplify
 The OpenAmplify Web Service is the first and only of its kind. It exposes, via an open API, 250
 man-years of development effort in a web service based upon more than a dozen granted patents.
 OpenAmplify simply does a better job of surfacing the meaning of web content, at massive scale
@@ -44,7 +44,7 @@ and speed. Here's an overview of the thinking and technology that makes it possi
 
 * http://www.openamplify.com/technology
 
-## Zemanta 
+### Zemanta
 Note, the Zemanta link for the programmable interface is here:
 
 * http://developer.zemanta.com/member/register/
@@ -55,7 +55,7 @@ for processing natural language, machine learning, information retrieval and sim
 
 * http://www.zemanta.com/outreach/technology/
 
-## Example
+## Web 3.0 Online Examples
 To illustrate these tools, paste the text of one of the downloaded messages into 
  
 * http://viewer.opencalais.com/
