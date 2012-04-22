@@ -12,13 +12,22 @@ module Yahoo
         msg = Parse::FindContent.find( SampleHtml )
       end
 
-      describe "#extract" do
+      describe "#analyze" do
         it "should have a top topic of dream with a weight of 20.00" do
-          doc = info.extract( msg )
+          info.analyze( msg )
 
-          Parse::Amplify::parse( Parse::Amplify::top_topics( doc ) ) do |tn, wt, vals|
+          Parse::Amplify::parse_topics( info.amplify.doc ) do |tn, wt, vals|
             tn.should == "dream"
             wt.should == "20.00"
+            break
+          end
+        end
+
+        it "should list keywords" do
+          info.analyze( msg )
+
+          Parse::Zemanta::parse_keywords( info.zemanta.doc ) do |kw|
+            kw.should == 'Lucid dream'
             break
           end
         end

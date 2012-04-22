@@ -3,6 +3,27 @@ module Yahoo
     module Parse
       # methods of extracting data from Amplify XML result doc
       class Amplify
+        def self.parse_topics( doc )
+          topic_results = Parse::Amplify.top_topics( doc )
+          return if topic_results == nil
+
+          topic_results.each do |topic_result|
+            tn, wt, val = self.parse_results( topic_result )
+            yield tn, wt, val
+          end
+        end
+
+        def self.parse_nouns( doc )
+          proper_nouns = Parse::Amplify.proper_nouns( doc )
+          return if proper_nouns == nil
+
+          proper_nouns.each do |topic_result|
+            tn, wt, val = self.parse_results( topic_result )
+            yield tn, wt, val
+          end
+        end
+
+     protected
         TopTopicsXPath = "//TopTopics/TopicResult"
         ProperNounsXPath = "//ProperNouns/TopicResult"
         NamedEntityXPath = 'NamedEntityType/Result'
@@ -15,17 +36,13 @@ module Yahoo
           doc.xpath( ProperNounsXPath )
         end
 
-        def self.parse( topic_results )
-          return if topic_results == nil
+        # find NamedEntityType/Result info
+        def self.parse_results( topic_result  )
+          tn     = topic_result.search("Topic/Name/text()").to_s
+          weight = topic_result.search("Topic/Value/text()").to_s
+          values = self.get_named_entities( topic_result )
 
-          topic_results.each do |topic_result|
-            tn     = topic_result.search("Topic/Name/text()").to_s
-            weight = topic_result.search("Topic/Value/text()").to_s
-
-            # find NamedEntityType/Result info
-            values = self.get_named_entities( topic_result )
-            yield( tn, weight, values )
-          end
+          return tn, weight, values
         end
 
         # returns an array of named entity information as hashes
