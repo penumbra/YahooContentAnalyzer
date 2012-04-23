@@ -20,22 +20,21 @@ require 'yahoo/groups/runner'
 require 'yahoo/topics/parse/find_topic'
 require 'yahoo/topics/runner'
 
-# parse the message content
-require 'yahoo/content/parse/find_content'
+# parse the message html file
+require 'yahoo/content/parse/find_html'
 require 'yahoo/content/parse/find_links'
+
+# parse the info extraction results
 require 'yahoo/content/parse/calais'
 require 'yahoo/content/parse/zemanta'
 require 'yahoo/content/parse/amplify'
 
 # information extraction
-require 'yahoo/content/calais'
-require 'yahoo/content/zemanta'
-require 'yahoo/content/amplify'
-require 'yahoo/content/links'
+require 'yahoo/content/analyze/calais'
+require 'yahoo/content/analyze/zemanta'
+require 'yahoo/content/analyze/amplify'
+require 'yahoo/content/analyze/links'
 
-# IE wrapper
+# runtime exec manager
 require 'yahoo/content/info'
-
-# Runtime agent
 require 'yahoo/content/runner'
-
