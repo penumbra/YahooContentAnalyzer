@@ -26,9 +26,6 @@ and Clojure Edition", March 12, 2011 - http://www.markwatson.com/opencontent/boo
 * Toby Segaran, Colin Evans, Jamie Taylor, "Programming the Semantic Web: Build Flexible Applications
 with Graph Data", O'Reilly Media, July 2009 - http://shop.oreilly.com/product/9780596153823.do
 
-* Watson, Mark, "Artificial Intelligence Programming With Ruby", Oct 2007 -
- http://www.markwatson.com/opencontent/ruby_ai/book.html
-
 ## Web 3.0 Tools
 ### Open Calais
 The OpenCalais Web Service automatically creates rich semantic metadata for the content you
