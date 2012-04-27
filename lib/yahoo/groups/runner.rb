@@ -24,11 +24,11 @@ module Yahoo
         html = @yahoo.select_group( @group_name )
 
         # create the data folder unless it already exits
-        Yahoo::FileUtils::make_data_dir( @data_path )
+        Yahoo::Shared::FileUtils::make_data_dir( @data_path )
 
         if @save_group_page
           fn = File::join(@data_path, @group_name)
-          Yahoo::FileUtils::write_file( fn, html ) unless html == nil
+          Yahoo::Shared::FileUtils::write_file( fn, html ) unless html == nil
         end
 
         # do reprocessing (file content failed to download due to Yahoo Group limitations)
@@ -49,8 +49,8 @@ module Yahoo
         html = @yahoo.get_message(id)
 
         if html != nil
-          fn = Yahoo::FileUtils::format_filename( @data_path, id )
-          Yahoo::FileUtils::write_file( fn, html )
+          fn = Yahoo::Shared::FileUtils::format_filename( @data_path, id )
+          Yahoo::Shared::FileUtils::write_file( fn, html )
         end
 
         sleep( WaitSeconds )

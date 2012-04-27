@@ -25,10 +25,9 @@ module Yahoo
       end
 
       def save_results( fn )
-        f = File.open( File::Join( @output_path, fn ), 'w' )
+        f = File.open( File.join( @output_path, fn ), 'w' )
 
         @topics.sort.each {|t| f.puts t }
-      ensure
         f.close
       end
     end

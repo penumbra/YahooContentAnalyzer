@@ -27,7 +27,7 @@ module Yahoo
         def analyze( title, date, msg)
           set_form_data( { 'title' => title, 'datetime' => date, 'content' => msg } )
 
-          response = Net::HTTP.start( @uri.hostname, @uri.port ) do |http|
+          response = Net::HTTP.start( @uri.host, @uri.port ) do |http|
             # post contains form data _and_ HTTP headers
             http.request( @post )
           end

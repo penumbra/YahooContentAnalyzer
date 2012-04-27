@@ -29,7 +29,11 @@ module Yahoo
             node = Yahoo::Shared::Finder.find( fn, xpath )
 
             idx = (node.text =~ /\</)
-            node.text[0..idx-2]
+            if idx 
+              node.text[0..idx-2]
+            else
+              nil
+            end
           end
 
           def find_content( fn, xpath = GroupContentXPath )

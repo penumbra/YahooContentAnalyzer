@@ -17,7 +17,7 @@ module Yahoo
 
         @ie = Yahoo::Content::Info.new( yahoo_yml )
 
-        @idx = Random.rand(1..30000)
+        @idx = ( rand * 30000 ).to_i
       end
 
       # scan the @data_path folder for message-#####.html file
