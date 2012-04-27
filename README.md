@@ -55,9 +55,16 @@ for processing natural language, machine learning, information retrieval and sim
 
 * http://www.zemanta.com/outreach/technology/
 
+### AlchemyAPI
+Identify people, companies, organizations, cities, geographic features, and other typed 
+entities within HTML pages, text documents/content, and scanned document images. 
+Our advanced named entity recognition (NER) capability supports multiple languages and 
+offers comprehensive disambiguation capabilities not found in other solutions.
+
 ## Web 3.0 Online Examples
 To illustrate these tools, paste the text of one of the downloaded messages into 
  
 * http://viewer.opencalais.com/
 * http://openamplify.com/
 * http://www.zemanta.com/demo/
+* http://www.alchemyapi/api/entity/types.html
