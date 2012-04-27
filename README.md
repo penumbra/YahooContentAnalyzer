@@ -67,4 +67,5 @@ To illustrate these tools, paste the text of one of the downloaded messages into
 * http://viewer.opencalais.com/
 * http://openamplify.com/
 * http://www.zemanta.com/demo/
-* http://www.alchemyapi/api/entity/types.html
+* http://www.alchemyapi.com/api/demo.html
+* http://www.alchemyapi.com/api/entity/types.html
