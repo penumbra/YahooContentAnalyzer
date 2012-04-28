@@ -61,6 +61,8 @@ entities within HTML pages, text documents/content, and scanned document images.
 Our advanced named entity recognition (NER) capability supports multiple languages and 
 offers comprehensive disambiguation capabilities not found in other solutions.
 
+* http://www.alchemyapi.com/api/entity/types.html
+
 ## Web 3.0 Online Examples
 To illustrate these tools, paste the text of one of the downloaded messages into 
  
@@ -68,4 +70,3 @@ To illustrate these tools, paste the text of one of the downloaded messages into
 * http://openamplify.com/
 * http://www.zemanta.com/demo/
 * http://www.alchemyapi.com/api/demo.html
-* http://www.alchemyapi.com/api/entity/types.html
