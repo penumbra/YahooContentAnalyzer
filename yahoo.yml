@@ -19,3 +19,6 @@ open_calais:
 
 zemanta:
   api_key: 'http://developer.zemanta.com'
+
+alchemy:
+  api_key: 'http://www.alchemyapi.com/api/demo.html'
