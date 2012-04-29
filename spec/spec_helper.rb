@@ -5,7 +5,7 @@ $LOAD_PATH << File.expand_path('../../lib', __FILE__) << '.'
 
 require 'yahoo'
 
-BasePath = '/projects/yahoo'
+BasePath = '/projects/YahooContentAnalyzer'
 OutPath = File.join( BasePath, 'out' )
 DataPath = File.join( BasePath, 'data' )
 
