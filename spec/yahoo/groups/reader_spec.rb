@@ -25,37 +25,17 @@ module Yahoo
     YahooGroupNameXPath = "//span[@class='ygrp-pname']"
 
     describe Reader do
-      let(:config) do
-        config = Yahoo::Shared::Config.new( Yahoo_Yml )
-        config.add_properties!( Yahoo::Shared::Config::YahooConfigTag )
-        config
-      end
-
-      let(:username) do
-        username = config.login_id
-      end
-
-      let(:password) do
-        password = config.password
-      end
-
-      # the Yahoo account use for this test is only subscribed to
-      # one group: the group specified by "group_name"
       let(:group_name) do
-        group_name = config.group_name
-      end
-
-      let(:group_host) do
-        group_host = config.group_host
+        'SynchronicityPhenomena'
       end
 
       let(:reader) do
-        reader = Yahoo::Groups::Reader.new( username, password )
+        reader = Yahoo::Groups::Reader.new( Yahoo_Yml )
       end
 
       describe "#list_groups" do
         it "should list several Yahoo group names" do
-          list = reader.list_groups( group_host )
+          list = reader.list_groups
 
           list[0].start_with?( group_name[0..5] ).should == true
         end
@@ -63,7 +43,7 @@ module Yahoo
 
       describe "#select_group" do
         it "should select a Yahoo group" do
-          html = reader.select_group( group_host, group_name )
+          html = reader.select_group
 
           get_group_name( html ).should == group_name
         end

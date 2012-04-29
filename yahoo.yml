@@ -2,8 +2,12 @@
 yahoo:
   login_id: 'my_user_id@yahoo.com'
   password: 'my_yahoo_password'
+  login_url: 'https://login.yahoo.com/config/login'
+  login_form: 'login_form' # form name is found within the Yahoo login page
   group_name: 'SynchronicityPhenomena'
   group_host: 'http://groups.yahoo.com'
+  browser_type: 'Mac Safari'
+  idle_timeout_sec: 10
 
 application:
   data_path: '/projects/YahooContentAnalyzer/data'

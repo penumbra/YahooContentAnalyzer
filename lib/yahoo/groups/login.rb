@@ -3,32 +3,30 @@
 #
 module Yahoo
   module Groups
-    class Login
-      BrowserType = 'Mac Safari'
-      YahooLoginUrl = 'https://login.yahoo.com/config/login'
-
-      # form name is found within the Yahoo login page
-      YahooLoginForm = 'login_form'
-
+    class Login < Yahoo::Shared::Config
       attr_reader :agent
 
-      def initialize( username, password )
-        @agent = Mechanize.new
+      def initialize( yahoo_yml )
+        super( yahoo_yml )
 
+        # login, password, group_name, login_url, login_form, browser_type, idle_timeout_sec
+        add_properties!( Yahoo::Shared::Config::YahooConfigTag )
+
+        @agent = Mechanize.new
         @agent.follow_meta_refresh = true
-        @agent.user_agent_alias = BrowserType
-        @agent.idle_timeout = 10  # seconds
+        @agent.user_agent_alias = @browser_type
+        @agent.idle_timeout = @idle_timeout_sec  # seconds
 
         # use the Mechanize agent (@agent) to log into Yahoo
-        login( username, password )
+        login
       end
 
-      def login( username, password )
-        login_form = @agent.get( YahooLoginUrl ).form( YahooLoginForm )
+      def login
+        login_form = @agent.get( @login_url ).form( @login_form )
 
         # basic authentication parameters
-        login_form.login = username
-        login_form.passwd = password
+        login_form.login = @login_id
+        login_form.passwd = @password
 
         # returns Mechanize::Page
         @agent.submit( login_form, login_form.buttons.first )

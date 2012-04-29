@@ -1,35 +1,12 @@
 require 'spec_helper'
 
 module Yahoo
-  module Shared
-    class Config
-      def login_id
-        @login_id
-      end
-      def password
-        @password
-      end
-    end
-  end
-
   module Groups
     describe Login do
-      let(:config) do
-        config = Yahoo::Shared::Config.new( Yahoo_Yml )
-      end
-
-      let(:username) do
-        username = config.login_id
-      end
-
-      let(:password) do
-        password = config.password
-      end
-
       describe "#login" do
         it "should authenticate with Yahoo server" do
           STDOUT.should_receive(:puts).with( 'yahoo login successful...' )
-          Yahoo::Groups::Login.new( username, password )
+          Yahoo::Groups::Login.new( Yahoo_Yml )
         end
       end
     end

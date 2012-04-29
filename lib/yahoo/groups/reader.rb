@@ -3,21 +3,26 @@
 #
 module Yahoo
   module Groups
-    class Reader
+    class Reader < Yahoo::Shared::Config
       attr_reader :login
       attr_reader :yahoo_page
 
-      def initialize( username, password )
-        @login = Yahoo::Groups::Login.new( username, password )
+      def initialize( yahoo_yml )
+        super( yahoo_yml )
+
+        # group_host, group_name
+        add_properties!( Yahoo::Shared::Config::YahooConfigTag )
+
+        @login = Yahoo::Groups::Login.new( yahoo_yml )
 
         @yahoo_page = Browse::Content.new( @login.agent )
       end
 
       # console list of groups associated with the current yahoo account
-      def list_groups( group_host )
+      def list_groups
         list = []
 
-        @yahoo_page.get_links_at( group_host ).each do |link|
+        @yahoo_page.get_links_at( @group_host ).each do |link|
           if link.href =~ /^\/group/
             puts "#{link.text}"
             list << link.text
@@ -28,8 +33,8 @@ module Yahoo
       end
 
       # returns html page or nil if page is not found
-      def select_group( group_host, group_title )
-        page = @yahoo_page.click_link_with_title( group_host, group_title )
+      def select_group
+        page = @yahoo_page.click_link_with_title( @group_host, @group_name )
 
         @groups_uri = page.uri
 
