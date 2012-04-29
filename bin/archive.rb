@@ -5,7 +5,7 @@ $LOAD_PATH << lib_dir << '.'
 
 require 'yahoo'
 
-ConfigFile = '/projects/yahoo/yahoo.yml'
+ConfigFile = '/projects/YahooContentAnalyzer/yahoo.yml'
 
 # uses lib/yahoo.rb to read SynchronicityPhenomena group content
 yahoo_runner = Yahoo::Groups::Runner.new( ConfigFile )
