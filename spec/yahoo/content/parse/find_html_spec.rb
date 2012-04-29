@@ -8,9 +8,9 @@ module Yahoo
         Date   = '2002-2-11T16:26:25Z'
         Author = 'Don Boulet'
 
-        describe "#find_title" do
+        describe "#find_topic" do
           it "should return a topic title" do
-            FindHtml.find_title( SampleHtml ).should == Title
+            FindHtml.find_topic( SampleHtml ).should == Title
           end
         end
 

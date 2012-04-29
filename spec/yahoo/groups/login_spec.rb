@@ -6,7 +6,7 @@ module Yahoo
       describe "#login" do
         it "should authenticate with Yahoo server" do
           STDOUT.should_receive(:puts).with( 'yahoo login successful...' )
-          Yahoo::Groups::Login.new( Yahoo_Yml )
+          Yahoo::Groups::Login.new
         end
       end
     end
