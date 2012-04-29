@@ -11,6 +11,7 @@ application:
   save_group_page: false
   do_reprocessing: true
   reprocess_file: 'reprocess.txt'
+  indent_xml_size: 2
 
 open_amplify:
   api_key: 'see http://www.openamplify.com/'
