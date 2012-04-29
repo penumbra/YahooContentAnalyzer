@@ -41,10 +41,9 @@ alchemy:
 
 # xpath constants
 yahoo_html_xpath:
-   GroupTitleXPath: "//td[@class='ygrp-topic-title entry-title']"
+   GroupTopicXPath: "//td[@class='ygrp-topic-title entry-title']"
    GroupDateXPath: "//abbr[@class='updated']"
    GroupAuthorXPath: "//div[@class='vcard']/span[@class='email']"
-   GroupTopicXPath: "//td[@class='ygrp-topic-title entry-title']"
    MessageXPath: "//div[@class='msgarea entry-content']"
    MessageLinksXPath: "//noscript/a"
 
