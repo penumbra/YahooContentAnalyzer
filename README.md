@@ -63,6 +63,15 @@ offers comprehensive disambiguation capabilities not found in other solutions.
 
 * http://www.alchemyapi.com/api/entity/types.html
 
+### AllegroGraph
+AllegroGraph is a modern, high-performance, persistent graph database. AllegroGraph uses
+efficient memory utilization in combination with disk-based storage, enabling it to scale
+to billions of quads while maintaining superior performance.
+
+AllegroGraph supports SPARQL, RDFS++, and Prolog reasoning from numerous client applications.
+
+* http://www.franz.com/agraph/allegrograph/
+
 ## Web 3.0 Online Examples
 To illustrate these tools, paste the text of one of the downloaded messages into 
  
