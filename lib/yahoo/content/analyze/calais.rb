@@ -14,7 +14,7 @@ module Yahoo
           @uri = URI.parse( ApiHost )
 
           headers = {
-            'Accept' => 'xml/rdf',
+            'Accept' => 'xml/rdf',    # 'Accept' => 'application/json',
             'x-calais-licenseID' => @api_key,
             'Content-Type' => 'text/xml; charset=UTF-8',
             'enableMetadataType' => 'SocialTags',

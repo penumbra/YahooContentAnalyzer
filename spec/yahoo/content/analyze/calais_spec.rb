@@ -29,6 +29,8 @@ module Yahoo
         end
 
         def test_match( doc )
+          puts doc.to_s
+
           doc.xpath('//c:exact').each do |node|
             if node.text == Person
               return true

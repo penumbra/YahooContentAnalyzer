@@ -33,7 +33,7 @@ require 'yahoo/content/parse/amplify'
 require 'yahoo/content/analyze/calais'
 require 'yahoo/content/analyze/zemanta'
 require 'yahoo/content/analyze/amplify'
-require 'yahoo/content/analyze/links'
+require 'yahoo/content/analyze/html'
 
 # runtime exec manager
 require 'yahoo/content/info'

@@ -9,7 +9,7 @@ module Yahoo
         @amplify = Analyze::Amplify.new( yahoo_yml )
         @zemanta = Analyze::Zemanta.new( yahoo_yml )
         @calais  = Analyze::Calais.new( yahoo_yml )
-        @links   = Analyze::Links.new
+        @html    = Analyze::Html.new
       end
 
       def analyze( entry )
@@ -28,7 +28,7 @@ module Yahoo
         @calais.analyze( @title, @date, msg )
 
         # find related messages for this topic/title
-        @links.analyze( entry )
+        @html.analyze( entry )
       end
 
       def to_s
@@ -40,7 +40,7 @@ module Yahoo
         puts YamlHeader
         @calais.to_s if @calais && @calais.doc
         puts YamlHeader
-        @links.to_s if @links
+        @html.to_s if @html
       end
     end
   end
