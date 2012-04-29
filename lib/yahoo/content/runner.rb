@@ -43,11 +43,12 @@ module Yahoo
       end
 
       # save Nokogiri::XML doc => @output_path/message-#####.xml
+      # using indent_xml_size from yaml
       def save_results( doc, id )
         fn = File::join( @output_path, id.sub('html', 'xml') )
         f = File.open(fn, 'w')
 
-        doc.write_to( f, :indent => 2 )
+        doc.write_to( f, :indent => @indent_xml_size )
 
         f.close
       end
