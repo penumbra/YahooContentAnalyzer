@@ -3,8 +3,8 @@ MRI Ruby program for reading and analyzing the contents of a Yahoo News Group
 
 # Usage
 1. Update the configuration file 'yahoo.yml' to use your Yahoo login id, password, desired group name, etc
-2. Update the range of messages to be downloaded in bin/groups.rb
-3. Exec bin/groups.rb (e.g. Unix ./bin/groups.rb)
+2. Update the range of messages to be downloaded in bin/archive.rb
+3. Exec bin/archive.rb (e.g. Unix ./bin/archive.rb)
 
 # Semantic Web (Web 3.0)
 ## What Is Web 3.0
