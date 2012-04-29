@@ -16,13 +16,9 @@ module Yahoo
         @author = Parse::FindHtml.find_author( entry )
         msg     = Parse::FindHtml.find_content( entry )
 
-        # perform information extraction using Open Amplify API
+        # perform information extraction
         @amplify.analyze( msg )
-
-        # perform information extraction using Zemanta API
         @zemanta.analyze( msg )
-
-        # perform information extraction using Open Calais API
         @calais.analyze( @title, @date, msg )
 
         # find related messages for this topic/title
