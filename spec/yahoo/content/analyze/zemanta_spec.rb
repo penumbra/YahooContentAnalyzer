@@ -9,12 +9,14 @@ module Yahoo
           zemanta = Zemanta.new
         end
 
-        let(:msg) do
-          msg = Yahoo::Content::Parse::FindHtml.find_content( SampleHtml )
+        let(:html) do
+          html = Yahoo::Content::Analyze::Html.new
+          html.analyze( SampleHtml )
+          html
         end
 
         it "should list keywords" do
-          zemanta.analyze( msg )
+          zemanta.analyze( html )
 
           Parse::Zemanta::parse_keywords( zemanta.doc ) do |kw|
             kw.should == 'Lucid dream'

@@ -10,20 +10,14 @@ module Yahoo
           calais = Calais.new
         end
 
-        let(:msg) do
-          msg = Parse::FindHtml.find_content( SampleHtml )
-        end
-
-        let(:title) do
-          title = Parse::FindHtml.find_title( SampleHtml )
-        end
-
-        let (:date) do
-          date = Parse::FindHtml.find_date( SampleHtml )
+        let(:html) do
+          html = Yahoo::Content::Analyze::Html.new
+          html.analyze( SampleHtml )
+          html
         end
 
         it "should create an xml/rdf report" do
-          calais.analyze( title, date, msg )
+          calais.analyze( html )
 
           test_match( calais.doc ).should == true
         end

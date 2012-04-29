@@ -17,8 +17,8 @@ module Yahoo
         end
 
         # return the Alchemy API response as Nokogiri XML Doc
-        def analyze( msg )
-          puts "analyze => #{msg}"
+        def analyze( html )
+          puts "analyze => #{html.msg}"
         end
       end  # Alchemy Class
     end  # Analyze

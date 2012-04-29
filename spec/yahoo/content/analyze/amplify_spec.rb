@@ -8,12 +8,14 @@ module Yahoo
           amplify = Amplify.new
         end
 
-        let(:msg) do
-          msg = Yahoo::Content::Parse::FindHtml.find_content( SampleHtml )
+        let(:html) do
+          html = Yahoo::Content::Analyze::Html.new
+          html.analyze( SampleHtml )
+          html
         end
 
         it "should have a top topic of dream with a weight of 20.00" do
-          amplify.analyze( msg )
+          amplify.analyze( html )
 
           Parse::Amplify::parse_topics( amplify.doc ) do |tn, wt, vals|
             tn.should == "dream"

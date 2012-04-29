@@ -6,9 +6,7 @@ module Yahoo
       def initialize
         @html    = Analyze::Html.new
 
-        @amplify = Analyze::Amplify.new
-        @zemanta = Analyze::Zemanta.new
-        @calais  = Analyze::Calais.new
+        @ie = [Analyze::Amplify.new, Analyze::Calais.new, Analyze::Zemanta.new, Analyze::Alchemy.new]
       end
 
       def analyze( entry )
@@ -16,20 +14,14 @@ module Yahoo
         @html.analyze( entry )
 
         # perform information extraction
-        @amplify.analyze( @html.msg )
-        @zemanta.analyze( @html.msg )
-        @calais.analyze( @html.title, @html.date, @html.msg )
+        @ie.each {|extractor| extractor.analyze( @html ) }
       end
 
       def to_s
         puts YamlHeader
         @html.to_s if @html
-        puts YamlHeader
-        @amplify.to_s if @amplify && @amplify.doc
-        puts YamlHeader
-        @zemanta.to_s if @zemanta && @zemanta.doc
-        puts YamlHeader
-        @calais.to_s if @calais && @calais.doc
+
+        @ie.each {|extractor| extractor.to_s if extractor.doc }
       end
     end
   end

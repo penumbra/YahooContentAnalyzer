@@ -18,10 +18,10 @@ module Yahoo
         end
 
         # return the Open Amplify API response as Nokogiri XML Doc
-        def analyze( msg )
+        def analyze( html )
           input_type= 'inputText'
 
-          response = @http.post( @path, "apiKey=#{@api_key}&#{input_type}=#{URI::escape(msg)}" )
+          response = @http.post( @path, "apiKey=#{@api_key}&#{input_type}=#{URI::escape( html.msg )}" )
 
           @doc = Nokogiri::XML( response.read_body )
         end
