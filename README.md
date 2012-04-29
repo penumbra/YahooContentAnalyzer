@@ -79,6 +79,8 @@ The free-form nature of triple-store data offers a lot of flexibility for constr
 databases, but that freedom can also make it less obvious how to find arbitrary data for
 retrieval, error-checking, or general browsing.
 
+![Gruff Graph Example](images/rdfa2_small.png)
+
 Gruff is a freely downloadable graphical triple-store browser that attempts to make
 data retrieval more pleasant and powerful with a variety of tools for laying out cyclical
 graphs, displaying tables of properties, managing queries, and building queries as
