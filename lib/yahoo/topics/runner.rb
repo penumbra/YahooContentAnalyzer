@@ -3,15 +3,12 @@ module Yahoo
     # usage:
     #   tr = Topics::Runner( my_yaml_file )
     class Runner < Yahoo::Shared::Config
-      # File search path expression to find downloaded html files across folders
-      SearchExpression = '**/message-*.html'
-
       attr_reader :topics
 
       def initialize
         super( $ConfigFile )
 
-        # data_path, output_path, save_group_path, do_reprocessing, reprocess_file
+        # data_path, output_path, search_expr, ...
         add_properties!( Yahoo::Shared::Config::AppConfigTag )
 
         @topics = Set.new
@@ -19,7 +16,7 @@ module Yahoo
 
       # find the message-#####.html files and add the topic name to @topics
       def process_messages
-        html_search = File.join( @data_path, SearchExpression )
+        html_search = File.join( @data_path, @search_expr )
         entries = Dir.glob( html_search )
 
         entries.sort.each do |entry|
