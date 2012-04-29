@@ -5,8 +5,8 @@ yahoo:
   group_name: 'SynchronicityPhenomena'
 
 application:
-  data_path: '/projects/yahoo/data'
-  output_path: '/projects/yahoo/out'
+  data_path: '/projects/YahooContentAnalyzer/data'
+  output_path: '/projects/YahooContentAnalyzer/out'
   save_group_page: false
   do_reprocessing: true
   reprocess_file: 'reprocess.txt'
