@@ -83,4 +83,3 @@ To illustrate these tools, paste the text of one of the downloaded messages into
 ## License
 Yahoo is released under the Ruby license (see the LICENSE file), which is compatible with the
 GNU GPL (see the COPYING file) via an explicit dual-licensing clause.
-
