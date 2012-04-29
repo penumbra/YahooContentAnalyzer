@@ -14,17 +14,17 @@ module Yahoo
       # wait 5 seconds so as to not cause a denial of service exception
       WaitSeconds = 5
 
-      def initialize( yahoo_yml )
-        super( yahoo_yml )
+      def initialize
+        super( $ConfigFile )
 
-        # data_path, output_path, save_group_path, do_reprocessing, reprocess_file
+        # data_path, output_path, save_group_path, do_reprocessing, reprocess_file, search_expr
         add_properties!( Yahoo::Shared::Config::AppConfigTag )
 
         # use Yahoo::Groups::Login class to login to Yahoo
-        @yahoo = Yahoo::Groups::Reader.new( yahoo_yml )
+        @yahoo = Yahoo::Groups::Reader.new
 
         # open the main page of the user-specified group
-        html = @yahoo.select_group( @group_name )
+        html = @yahoo.select_group
 
         # create the data folder unless it already exits
         Yahoo::Shared::FileUtils::make_data_dir( @data_path )

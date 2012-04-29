@@ -6,10 +6,10 @@ module Yahoo
     class Login < Yahoo::Shared::Config
       attr_reader :agent
 
-      def initialize( yahoo_yml )
-        super( yahoo_yml )
+      def initialize
+        super( $ConfigFile )
 
-        # login, password, group_name, login_url, login_form, browser_type, idle_timeout_sec
+        # login, password, login_url, login_form, browser_type, idle_timeout_sec
         add_properties!( Yahoo::Shared::Config::YahooConfigTag )
 
         @agent = Mechanize.new

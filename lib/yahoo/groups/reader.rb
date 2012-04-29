@@ -7,13 +7,13 @@ module Yahoo
       attr_reader :login
       attr_reader :yahoo_page
 
-      def initialize( yahoo_yml )
-        super( yahoo_yml )
+      def initialize
+        super( $ConfigFile )
 
         # group_host, group_name
         add_properties!( Yahoo::Shared::Config::YahooConfigTag )
 
-        @login = Yahoo::Groups::Login.new( yahoo_yml )
+        @login = Yahoo::Groups::Login.new
 
         @yahoo_page = Browse::Content.new( @login.agent )
       end

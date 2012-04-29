@@ -30,7 +30,7 @@ module Yahoo
       end
 
       let(:reader) do
-        reader = Yahoo::Groups::Reader.new( Yahoo_Yml )
+        reader = Yahoo::Groups::Reader.new
       end
 
       describe "#list_groups" do

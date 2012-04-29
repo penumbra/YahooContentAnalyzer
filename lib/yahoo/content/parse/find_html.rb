@@ -14,7 +14,7 @@ module Yahoo
             prop[ 'yahoo_html_xpath' ].each { |key, value| const_set("#{key}", value) }
           end
 
-          def find_title( fn, xpath = GroupTitleXPath )
+          def find_topic( fn, xpath = GroupTopicXPath )
             node = Yahoo::Shared::Finder.find( fn, xpath )
             node.text
           end
@@ -74,9 +74,8 @@ module Yahoo
               nil
             end
           end
-
-        end
-      end
-    end
-  end
-end
+        end # self
+      end # FindHtml
+    end # Parse
+  end # Content
+end # Yahoo
