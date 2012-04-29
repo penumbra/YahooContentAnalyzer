@@ -7,9 +7,6 @@ module Yahoo
     # one of 30,000 messages
     #
     class Runner < Yahoo::Shared::Config
-      # File search path expression to find downloaded html files across folders
-      SearchExpression = '**/message-*.html'
-
       attr_reader :content
 
       def initialize( yahoo_yml )
@@ -25,7 +22,7 @@ module Yahoo
 
       # scan the @data_path folder for message-#####.html file
       def process_messages
-        count = 0; file_entries = Dir.glob( File.join( @data_path, SearchExpression ) )
+        count = 0; file_entries = Dir.glob( File.join( @data_path, @search_expr ) )
 
         file_entries.sort.each do |entry|
           count += 1

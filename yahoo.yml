@@ -11,7 +11,8 @@ application:
   save_group_page: false
   do_reprocessing: true
   reprocess_file: 'reprocess.txt'
-  indent_xml_size: 2
+  indent_xml_size: 2    # how to indent xml file during save
+  search_expr: '**/message-*.html'  # File search path expression
 
 open_amplify:
   api_key: 'see http://www.openamplify.com/'
