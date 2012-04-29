@@ -4,14 +4,15 @@ module Yahoo
       YamlHeader = "---"
 
       def initialize
+        @html    = Analyze::Html.new
+
         @amplify = Analyze::Amplify.new
         @zemanta = Analyze::Zemanta.new
         @calais  = Analyze::Calais.new
-        @html    = Analyze::Html.new
       end
 
       def analyze( entry )
-        # find related messages for this topic/title
+        # extract title, msg, date, author, and linked messages
         @html.analyze( entry )
 
         # perform information extraction
