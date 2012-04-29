@@ -3,13 +3,12 @@
 lib_dir = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH << lib_dir << '.'
 
+$ConfigFile = '/projects/YahooContentAnalyzer/yahoo.yml'
+
 require 'yahoo'
 
-ConfigFile = '/projects/YahooContentAnalyzer/yahoo.yml'
-
 # uses lib/yahoo.rb to read SynchronicityPhenomena group content
-yahoo_runner = Yahoo::Groups::Runner.new( ConfigFile )
-
+yahoo_runner = Yahoo::Groups::Runner.new
 #
 # Warning: This program does not  yet prevent processing
 #  a message id range where the upper range exceed the
@@ -17,4 +16,4 @@ yahoo_runner = Yahoo::Groups::Runner.new( ConfigFile )
 #
 
 # download 1,000 messages from my favorite Yahoo Newsgroup
-(32001..33000).each { |id| yahoo_runner.process_message( id ) }
+(32001..32010).each { |id| yahoo_runner.process_message( id ) }
