@@ -72,6 +72,20 @@ AllegroGraph supports SPARQL, RDFS++, and Prolog reasoning from numerous client 
 
 * http://www.franz.com/agraph/allegrograph/
 
+### Gruff
+Gruff is a Grapher-Based Triple-Store Browser for AllegroGraph
+
+The free-form nature of triple-store data offers a lot of flexibility for constructing
+databases, but that freedom can also make it less obvious how to find arbitrary data for
+retrieval, error-checking, or general browsing.
+
+Gruff is a freely downloadable graphical triple-store browser that attempts to make
+data retrieval more pleasant and powerful with a variety of tools for laying out cyclical
+graphs, displaying tables of properties, managing queries, and building queries as
+visual diagrams.
+
+* http://www.franz.com/agraph/gruff/
+
 ## Web 3.0 Online Examples
 To illustrate these tools, paste the text of one of the downloaded messages into 
  
