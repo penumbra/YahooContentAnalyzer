@@ -17,7 +17,6 @@ require 'yahoo/groups/parse/reprocess'
 require 'yahoo/groups/runner'
 
 # scan messages for topics
-require 'yahoo/topics/parse/find_topic'
 require 'yahoo/topics/runner'
 
 # parse the info extraction results
