@@ -1,17 +1,16 @@
 module Yahoo
   module Content
     module Analyze
-      class Calais
-        ApiHost = 'http://api.opencalais.com/tag/rs/enrich'
-
+      class Calais < Yahoo::Shared::Config
         attr_reader :doc
 
         def initialize( yahoo_yml )
-          prop = YAML::load_file( yahoo_yml )
+          super( yahoo_yml )
 
-          @api_key = prop['open_calais']['api_key']
+          # api_key, host
+          add_properties!( Yahoo::Shared::Config::OpenCalaisTag )
 
-          @uri = URI.parse( ApiHost )
+          @uri = URI.parse( @host )
 
           headers = {
             'Accept' => 'xml/rdf',    # 'Accept' => 'application/json',

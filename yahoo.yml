@@ -3,6 +3,7 @@ yahoo:
   login_id: 'my_user_id@yahoo.com'
   password: 'my_yahoo_password'
   group_name: 'SynchronicityPhenomena'
+  group_host: 'http://groups.yahoo.com'
 
 application:
   data_path: '/projects/YahooContentAnalyzer/data'
@@ -13,12 +14,21 @@ application:
 
 open_amplify:
   api_key: 'see http://www.openamplify.com/'
+  host: 'portaltnx20.openamplify.com'
+  port: 8180
+  path: '/AmplifyWeb_v20/AmplifyThis'
 
 open_calais:
   api_key: 'http://www.opencalais.com/'
+  host: 'http://api.opencalais.com/tag/rs/enrich'
+  port: 80
 
 zemanta:
   api_key: 'http://developer.zemanta.com'
+  host: 'http://api.zemanta.com/services/rest/0.0/'
 
 alchemy:
   api_key: 'http://www.alchemyapi.com/api/demo.html'
+  host: 'http://access.alchemyapi.com/'
+  port: 80
+  path: 'to-be-determined'

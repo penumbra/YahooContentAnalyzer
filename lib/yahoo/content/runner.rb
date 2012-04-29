@@ -15,6 +15,9 @@ module Yahoo
       def initialize( yahoo_yml )
         super( yahoo_yml )
 
+        # data_path, output_path, save_group_path, do_reprocessing, reprocess_file
+        add_properties!( Yahoo::Shared::Config::ApplicationTag )
+
         @ie = Yahoo::Content::Info.new( yahoo_yml )
 
         @idx = ( rand * 30000 ).to_i

@@ -1,26 +1,26 @@
 module Yahoo
   module Content
     module Analyze
-      class Zemanta
-        ApiHost = 'http://api.zemanta.com/services/rest/0.0/'
+      class Zemanta < Yahoo::Shared::Config
         attr_reader :doc
 
         def initialize( yahoo_yml )
-          prop = YAML::load_file( yahoo_yml )
+          super( yahoo_yml )
 
-          @api_key = prop['zemanta']['api_key']
+          # api_key, host, port, path
+          add_properties!( Yahoo::Shared::Config::ZemantaTag )
 
           @request = {
-              'method' =>'zemanta.suggest',
-              'api_key' => @api_key,
-              'format' => 'xml'
+            'method' =>'zemanta.suggest',
+            'api_key' => @api_key,
+            'format' => 'xml'
           }
         end
 
         # return the Open Amplify API response as Nokogiri XML Doc
         def analyze( msg )
           @request['text'] = msg
-          response = Net::HTTP.post_form( URI.parse( ApiHost ), @request )
+          response = Net::HTTP.post_form( URI.parse( @host ), @request )
 
           @doc = Nokogiri::XML( response.read_body )
         end

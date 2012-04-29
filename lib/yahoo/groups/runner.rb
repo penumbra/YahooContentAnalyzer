@@ -17,6 +17,12 @@ module Yahoo
       def initialize( yahoo_yml )
         super( yahoo_yml )
 
+        # login, password, group_name
+        add_properties!( Yahoo::Shared::Config::YahooConfigTag )
+
+        # data_path, output_path, save_group_path, do_reprocessing, reprocess_file
+        add_properties!( Yahoo::Shared::Config::AppConfigTag )
+
         # use Yahoo::Groups::Login class to login to Yahoo
         @yahoo = Yahoo::Groups::Reader.new( @login_id, @password )
 

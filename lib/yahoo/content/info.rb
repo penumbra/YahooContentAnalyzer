@@ -1,11 +1,9 @@
 module Yahoo
   module Content
-    class Info < Yahoo::Shared::Config
+    class Info
       YamlHeader = "---"
 
       def initialize( yahoo_yml )
-        super( yahoo_yml )
-
         @amplify = Analyze::Amplify.new( yahoo_yml )
         @zemanta = Analyze::Zemanta.new( yahoo_yml )
         @calais  = Analyze::Calais.new( yahoo_yml )
