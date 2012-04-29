@@ -2,6 +2,10 @@ module Yahoo
   module Content
     module Analyze
       class Html
+        attr_reader :msg
+        attr_reader :title
+        attr_reader :date
+        attr_reader :author
         attr_reader :message_links
         attr_reader :email_links
 
@@ -11,12 +15,19 @@ module Yahoo
         end
 
         def analyze( entry )
-          @message_links = Parse::FindLinks.find( entry )
+          @title  = Parse::FindHtml.find_title( entry )
+          @date   = Parse::FindHtml.find_date( entry )
+          @author = Parse::FindHtml.find_author( entry )
+          @msg     = Parse::FindHtml.find_content( entry )
+          @message_links = Parse::FindHtml.find_links( entry )
         end
 
         def to_s
+          puts "title => #{@title}"
+          puts "date => #{@date}"
+          puts "author => #{@author}"
+          puts "linked messages => "
           if @message_links
-            print "linked messages => "
             @message_links.each {|t| print "#{t} "}
             puts
           end

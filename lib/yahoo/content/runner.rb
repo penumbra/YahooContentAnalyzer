@@ -9,13 +9,13 @@ module Yahoo
     class Runner < Yahoo::Shared::Config
       attr_reader :content
 
-      def initialize( yahoo_yml )
-        super( yahoo_yml )
+      def initialize
+        super( $ConfigFile )
 
         # data_path, output_path, save_group_path, do_reprocessing, reprocess_file
-        add_properties!( Yahoo::Shared::Config::ApplicationTag )
+        add_properties!( Yahoo::Shared::Config::AppConfigTag )
 
-        @ie = Yahoo::Content::Info.new( yahoo_yml )
+        @ie = Yahoo::Content::Info.new
 
         @idx = ( rand * 30000 ).to_i
       end

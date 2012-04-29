@@ -20,11 +20,8 @@ require 'yahoo/groups/runner'
 require 'yahoo/topics/parse/find_topic'
 require 'yahoo/topics/runner'
 
-# parse the message html file
-require 'yahoo/content/parse/find_html'
-require 'yahoo/content/parse/find_links'
-
 # parse the info extraction results
+require 'yahoo/content/parse/find_html'
 require 'yahoo/content/parse/calais'
 require 'yahoo/content/parse/zemanta'
 require 'yahoo/content/parse/amplify'

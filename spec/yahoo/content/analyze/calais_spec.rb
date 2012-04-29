@@ -7,7 +7,7 @@ module Yahoo
         Person = 'Stephen LeBerge, Ph.D.'
 
         let(:calais) do
-          calais = Calais.new( Yahoo_Yml )
+          calais = Calais.new
         end
 
         let(:msg) do

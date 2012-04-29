@@ -2,9 +2,13 @@ module Yahoo
   module Content
     module Parse
       class Zemanta
-        KeywordPath = '//keywords/keyword/name'
-
         class << self
+          begin
+            # set xpath = ... constants
+            prop = YAML::load_file( $ConfigFile )
+            prop[ 'zemanta_xpath' ].each { |key, value| const_set("#{key}", value) }
+          end
+
           def parse_keywords( doc )
             doc.xpath( KeywordPath ).each do |node|
               yield node.text

@@ -10,7 +10,7 @@ module Yahoo
           html = Html.new
         end
 
-        describe "#find" do
+        describe "#find_links" do
           it "should return an array of message ids" do
             html.analyze( SampleHtml )
 

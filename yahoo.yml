@@ -38,3 +38,29 @@ alchemy:
   host: 'http://access.alchemyapi.com/'
   port: 80
   path: 'to-be-determined'
+
+# xpath constants
+yahoo_html_xpath:
+   GroupTitleXPath: "//td[@class='ygrp-topic-title entry-title']"
+   GroupDateXPath: "//abbr[@class='updated']"
+   GroupAuthorXPath: "//div[@class='vcard']/span[@class='email']"
+   MessageXPath: "//div[@class='msgarea entry-content']"
+   MessageLinksXPath: "//noscript/a"
+
+open_amplify_xpath:
+   TopTopicsXPath: "//TopTopics/TopicResult"
+   ProperNounsXPath: "//ProperNouns/TopicResult"
+   NamedEntityXPath: "NamedEntityType/Result"
+   TopicNameText: "Topic/Name/text()"
+   TopicValueText: "Topic/Value/text()"
+   NameText: "Name/text()"
+   ValueText: "Value/text()"
+
+open_calais_xpath:
+   Nothing: "yet"
+
+zemanta_xpath:
+  KeywordPath: '//keywords/keyword/name'
+
+alchemy_xpath:
+   Nothing: "yet"

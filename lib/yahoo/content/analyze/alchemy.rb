@@ -8,8 +8,8 @@ module Yahoo
       class Alchemy < Yahoo::Shared::Config
         attr_reader :doc
 
-        def initialize( yahoo_yml )
-          super( yahoo_yml )
+        def initialize
+          super( $ConfigFile )
 
           add_properties!( AlchemyTag )
 

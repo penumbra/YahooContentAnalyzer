@@ -4,6 +4,12 @@ module Yahoo
       # methods of extracting data from Amplify XML result doc
       class Amplify
         class << self
+          begin
+            # set xpath = ... constants
+            prop = YAML::load_file( $ConfigFile )
+            prop[ 'open_amplify_xpath' ].each { |key, value| const_set("#{key}", value) }
+          end
+
           # process each of the top topics
           def parse_topics( doc )
             topic_results = doc.xpath( TopTopicsXPath )
@@ -27,14 +33,10 @@ module Yahoo
           end
 
        protected
-          TopTopicsXPath = "//TopTopics/TopicResult"
-          ProperNounsXPath = "//ProperNouns/TopicResult"
-          NamedEntityXPath = 'NamedEntityType/Result'
-
           # find NamedEntityType/Result info
           def parse_results( topic_result  )
-            tn     = topic_result.search("Topic/Name/text()").to_s
-            weight = topic_result.search("Topic/Value/text()").to_s
+            tn     = topic_result.search( TopicNameText ).to_s
+            weight = topic_result.search( TopicValueText ).to_s
             values = self.get_named_entities( topic_result )
 
             return tn, weight, values
@@ -48,8 +50,8 @@ module Yahoo
             entities = topic_result.search( NamedEntityXPath )
 
             entities.each do |entity|
-              result << {:entity => entity.search('Name/text()').to_s,
-                         :value => entity.search('Value/text()').to_s }
+              result << {:entity => entity.search( NameText ).to_s,
+                         :value => entity.search( ValueText ).to_s }
             end
 
             result

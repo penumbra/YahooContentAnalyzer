@@ -6,7 +6,7 @@ module Yahoo
       describe Zemanta do
 
         let(:zemanta) do
-          zemanta = Zemanta.new( Yahoo_Yml )
+          zemanta = Zemanta.new
         end
 
         let(:msg) do

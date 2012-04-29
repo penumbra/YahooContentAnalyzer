@@ -4,8 +4,8 @@ module Yahoo
       class Calais < Yahoo::Shared::Config
         attr_reader :doc
 
-        def initialize( yahoo_yml )
-          super( yahoo_yml )
+        def initialize
+          super( $ConfigFile )
 
           # api_key, host
           add_properties!( Yahoo::Shared::Config::OpenCalaisTag )

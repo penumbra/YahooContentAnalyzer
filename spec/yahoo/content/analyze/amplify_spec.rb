@@ -5,7 +5,7 @@ module Yahoo
     module Analyze
       describe Amplify do
         let (:amplify) do
-          amplify = Amplify.new( Yahoo_Yml )
+          amplify = Amplify.new
         end
 
         let(:msg) do

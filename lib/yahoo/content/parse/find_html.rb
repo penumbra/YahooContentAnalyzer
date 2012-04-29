@@ -6,14 +6,14 @@ module Yahoo
   module Content
     module Parse
       # located an element by xpath within a specified HTML document
-      class FindHtml < Yahoo::Shared::Finder
-        # <abbr class="updated" title="2002-2-11T16:26:25Z">Mon Feb&nbsp;11,&nbsp;2002 4:26&nbsp;pm</abbr>
-        GroupDateXPath = "//abbr[@class='updated']"
-        GroupAuthorXPath = "//div[@class='vcard']/span[@class='email']"
-        GroupTitleXPath = "//td[@class='ygrp-topic-title entry-title']"
-        GroupContentXPath = "//div[@class='msgarea entry-content']"
-
+      class FindHtml
         class << self
+          begin
+            # set xpath = ... constants
+            prop = YAML::load_file( $ConfigFile )
+            prop[ 'yahoo_html_xpath' ].each { |key, value| const_set("#{key}", value) }
+          end
+
           def find_title( fn, xpath = GroupTitleXPath )
             node = Yahoo::Shared::Finder.find( fn, xpath )
             node.text
@@ -36,10 +36,45 @@ module Yahoo
             end
           end
 
-          def find_content( fn, xpath = GroupContentXPath )
+          def find_content( fn, xpath = MessageXPath )
             node = Yahoo::Shared::Finder.find( fn, xpath )
             node.text
           end
+
+          def find_links( fn, xpath = MessageLinksXPath )
+            node_list = Yahoo::Shared::Finder.find( fn, xpath )
+
+            # return an array of id's representing other messages in the newsgroup thread
+            get_ids( node_list )
+          end
+
+          # compile an array of related message id's
+          def get_ids( node_list )
+            ids = []
+
+            if node_list != nil
+              node_list.each do |node|
+                id = get_id( node['href'] )
+
+                ids << id.to_i unless id == nil
+              end
+            end
+
+            ids
+          end
+
+          # use regex to extract the message id from a URL
+          def get_id( href )
+            if href =~ /p=[0-9]*$/
+              href =~ /(message\/\d*)/
+              match = $~
+
+              match.string[match.begin(0)+"message/".size .. match.end(0)-1]
+            else
+              nil
+            end
+          end
+
         end
       end
     end
