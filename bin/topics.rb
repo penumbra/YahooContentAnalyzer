@@ -3,12 +3,13 @@
 lib_dir = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH << lib_dir << '.'
 
+$ConfigFile = '/projects/YahooContentAnalyzer/yahoo.yml'
+
 require 'yahoo'
 
-ConfigFile = '/projects/YahooContentAnalyzer/yahoo_secret.yml'
-TopicsFile = 'topics.txt'
+tr = Yahoo::Topics::Runner.new
 
-tr = Yahoo::Topics::Runner.new( ConfigFile )
+TopicsFile = 'topics.txt'
 
 # process all message-####.html files anywhere within the data_path folder
 tr.process_messages

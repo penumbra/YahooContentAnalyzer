@@ -22,7 +22,7 @@ module Yahoo
   end
 
   module Groups
-    YahooGroupNameXPath = "//span[@class='ygrp-pname']"
+    GroupNameXPath = "//span[@class='ygrp-pname']"
 
     describe Reader do
       let(:group_name) do
@@ -52,7 +52,7 @@ module Yahoo
       # find this node in the html doc
       # <span class="ygrp-pname">SynchronicityPhenomena</span>
       def get_group_name( html )
-        node = Nokogiri::HTML( html ).xpath( YahooGroupNameXPath )
+        node = Nokogiri::HTML( html ).xpath( GroupNameXPath )
         node.text
       end
     end

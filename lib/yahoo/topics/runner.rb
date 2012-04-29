@@ -8,11 +8,11 @@ module Yahoo
 
       attr_reader :topics
 
-      def initialize( yahoo_yml )
-        super( yahoo_yml )
+      def initialize
+        super( $ConfigFile )
 
         # data_path, output_path, save_group_path, do_reprocessing, reprocess_file
-        add_properties!( Yahoo::Shared::Config::ApplicationTag )
+        add_properties!( Yahoo::Shared::Config::AppConfigTag )
 
         @topics = Set.new
       end
