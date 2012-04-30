@@ -1,26 +1,6 @@
 require 'spec_helper'
 
 module Yahoo
-  module Shared
-    class Config
-      def login_id
-        @login_id
-      end
-
-      def password
-        @password
-      end
-
-      def group_name
-        @group_name
-      end
-
-      def group_host
-        @group_host
-      end
-    end
-  end
-
   module Groups
     GroupNameXPath = "//span[@class='ygrp-pname']"
 
