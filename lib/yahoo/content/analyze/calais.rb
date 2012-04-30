@@ -2,7 +2,7 @@ module Yahoo
   module Content
     module Analyze
 
-      class Calais < ApiConfig
+      class Calais < Yahoo::Shared::AppConfig
         attr_reader :doc
 
         def initialize

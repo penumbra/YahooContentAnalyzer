@@ -1,7 +1,7 @@
 module Yahoo
   module Content
     module Analyze
-      class Zemanta < ApiConfig
+      class Zemanta < Yahoo::Shared::AppConfig
         attr_reader :doc
 
         def initialize

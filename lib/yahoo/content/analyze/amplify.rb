@@ -5,7 +5,7 @@ require 'uri'
 module Yahoo
   module Content
     module Analyze
-      class Amplify < ApiConfig
+      class Amplify < Yahoo::Shared::Config
         attr_reader :doc
 
         def initialize

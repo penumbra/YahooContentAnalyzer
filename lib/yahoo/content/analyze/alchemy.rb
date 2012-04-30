@@ -6,7 +6,7 @@ module Yahoo
   module Content
     module Analyze
 
-      class Alchemy < ApiConfig
+      class Alchemy < Yahoo::Shared::AppConfig
         attr_reader :doc
 
         def initialize

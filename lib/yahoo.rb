@@ -26,7 +26,6 @@ require 'yahoo/content/parse/zemanta'
 require 'yahoo/content/parse/amplify'
 
 # information extraction
-require 'yahoo/content/analyze/api_config'
 require 'yahoo/content/analyze/calais'
 require 'yahoo/content/analyze/zemanta'
 require 'yahoo/content/analyze/amplify'
