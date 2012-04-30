@@ -20,6 +20,7 @@ application:
 
 open_amplify:
   api_key: 'see http://www.openamplify.com/'
+  input_type: 'inputText'
   host: 'portaltnx20.openamplify.com'
   port: 8180
   path: '/AmplifyWeb_v20/AmplifyThis'
@@ -31,6 +32,8 @@ open_calais:
 
 zemanta:
   api_key: 'http://developer.zemanta.com'
+  method: 'zemanta.suggest'
+  format: 'xml'
   host: 'http://api.zemanta.com/services/rest/0.0/'
 
 alchemy:
