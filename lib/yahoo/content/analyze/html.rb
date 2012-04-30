@@ -1,6 +1,7 @@
 module Yahoo
   module Content
     module Analyze
+
       class Html
         attr_reader :topic, :date, :author, :msg, :message_links, :email_links
 
@@ -27,7 +28,8 @@ module Yahoo
             puts
           end
         end
-      end
+      end  # Html Class
+
     end # Analyze
   end # Content
 end # Yahoo

@@ -1,6 +1,7 @@
 module Yahoo
   module Content
     module Analyze
+
       class Zemanta < Yahoo::Shared::AppConfig
         attr_reader :doc
 
@@ -8,9 +9,9 @@ module Yahoo
           config!( 'zemanta' )
 
           @request = {
-            'method' => @method,
+            'method'  => @method,
             'api_key' => @api_key,
-            'format' => @format
+            'format'  => @format
           }
         end
 
@@ -29,6 +30,7 @@ module Yahoo
           end
         end
       end
-    end  # Analyze
+
+    end # Analyze
   end # Content
 end # Yahoo

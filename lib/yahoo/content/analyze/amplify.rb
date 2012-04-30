@@ -1,10 +1,7 @@
-require 'yaml'
-require 'net/http'
-require 'uri'
-
 module Yahoo
   module Content
     module Analyze
+
       class Amplify < Yahoo::Shared::AppConfig
         attr_reader :doc
 
@@ -33,7 +30,9 @@ module Yahoo
             # values.each {|val| val.each {|k,v| puts "#{k}=>#{v}"}}
           end
         end
-      end
-    end
-  end
-end
+      end # Amplify Class
+
+
+    end  # Analyze
+  end # Content
+end # Yahoo

@@ -16,7 +16,8 @@ module Yahoo
             puts "Error parsing keywords => #{ex}"
           end
         end
-      end
+      end # Zemanta Class
+
     end # Parse
   end # Content
-end  # Yahoo
+end # Yahoo

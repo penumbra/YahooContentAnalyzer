@@ -20,6 +20,7 @@ module Yahoo
           puts "analyze => #{html.msg}"
         end
       end  # Alchemy Class
+
     end  # Analyze
   end # Content
 end # Yahoo

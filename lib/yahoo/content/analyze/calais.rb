@@ -47,7 +47,8 @@ module Yahoo
         def set_form_data( request  )
           @post.set_form_data( request )
         end
-      end
+      end # Calais Class
+
     end  # Analyze
   end # Content
 end # Yahoo

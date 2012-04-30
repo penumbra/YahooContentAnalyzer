@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'mechanize'
 require 'yaml'
+require 'net/http'
+require 'nokogiri'
 
 # browse web as Mechanized client
 require 'browse'
