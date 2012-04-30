@@ -4,7 +4,7 @@ module Yahoo
       attr_reader :content
 
       def initialize
-        super
+        config!
         @ie = Yahoo::Content::Info.new
 
         @idx = ( rand * 30000 ).to_i
