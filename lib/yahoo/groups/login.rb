@@ -3,14 +3,13 @@
 #
 module Yahoo
   module Groups
-    class Login < Yahoo::Shared::Config
+    class Login
       attr_reader :agent
 
       def initialize
-        super( $ConfigFile )
-
         # login, password, login_url, login_form, browser_type, idle_timeout_sec
-        add_properties!( Yahoo::Shared::Config::YahooConfigTag )
+        prop = YAML::load_file( $ConfigFile )
+        prop[ 'yahoo' ].each { |k, v| instance_variable_set("@#{k}", v ) }
 
         @agent = Mechanize.new
         @agent.follow_meta_refresh = true

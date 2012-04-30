@@ -1,14 +1,13 @@
 module Yahoo
   module Content
     module Parse
+      begin
+        prop = YAML::load_file( $ConfigFile )
+        prop[ 'zemanta_xpath' ].each {|k, v| const_set( "#{k}", v ) }
+      end
+
       class Zemanta
         class << self
-          begin
-            # set xpath = ... constants
-            prop = YAML::load_file( $ConfigFile )
-            prop[ 'zemanta_xpath' ].each { |key, value| const_set("#{key}", value) }
-          end
-
           def parse_keywords( doc )
             doc.xpath( KeywordPath ).each do |node|
               yield node.text
@@ -18,6 +17,6 @@ module Yahoo
           end
         end
       end
-    end
-  end
-end
+    end # Parse
+  end # Content
+end  # Yahoo

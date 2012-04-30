@@ -5,13 +5,12 @@ require 'uri'
 module Yahoo
   module Content
     module Analyze
-      class Alchemy < Yahoo::Shared::Config
+      class Alchemy
         attr_reader :doc
 
         def initialize
-          super( $ConfigFile )
-
-          add_properties!( AlchemyTag )
+          prop = YAML::load_file( $ConfigFile )
+          prop[ 'alchemy' ].each { |k, v| instance_variable_set("@#{k}", v ) }
 
           @http = Net::HTTP.new( @host, @port )
         end

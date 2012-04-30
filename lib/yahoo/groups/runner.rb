@@ -3,22 +3,14 @@ require 'yaml'
 
 module Yahoo
   module Groups
-    # example usage:
-    #   yr = Yahoo::Groups::Runner( my_yaml_file )
-    #   (1..1000).each {|id| yr.process_message( id ) }
-    #
-    # also:
-    #   details on how to activate the reprocessing feature may be
-    #   found in Yahoo::Groups::Parse::Reprocess class
-    class Runner < Yahoo::Shared::Config
+    class Runner
       # wait 5 seconds so as to not cause a denial of service exception
       WaitSeconds = 5
 
       def initialize
-        super( $ConfigFile )
-
         # data_path, output_path, save_group_path, do_reprocessing, reprocess_file, search_expr
-        add_properties!( Yahoo::Shared::Config::AppConfigTag )
+        prop = YAML::load_file( $ConfigFile )
+        prop[ 'application' ].each { |k, v| instance_variable_set("@#{k}", v) }
 
         # use Yahoo::Groups::Login class to login to Yahoo
         @yahoo = Yahoo::Groups::Reader.new

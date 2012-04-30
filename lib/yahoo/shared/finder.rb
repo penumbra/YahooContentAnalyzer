@@ -1,7 +1,7 @@
 module Yahoo
   module Shared
-    class Finder
-      def self.find( fn, xpath )
+    module Finder
+      def find( fn, xpath )
         f = File.open( fn )
         html = Nokogiri::HTML( f )
 
@@ -12,6 +12,6 @@ module Yahoo
       ensure
         f.close
       end
-    end
+    end # Finder
   end
 end

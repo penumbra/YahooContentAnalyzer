@@ -1,14 +1,13 @@
 module Yahoo
   module Content
     module Analyze
-      class Calais < Yahoo::Shared::Config
+      class Calais
         attr_reader :doc
 
         def initialize
-          super( $ConfigFile )
-
-          # api_key, host
-          add_properties!( Yahoo::Shared::Config::OpenCalaisTag )
+          # api_key, host, port
+          prop = YAML::load_file( $ConfigFile )
+          prop[ 'open_calais' ].each { |k, v| instance_variable_set("@#{k}", v ) }
 
           @uri = URI.parse( @host )
 
@@ -36,7 +35,7 @@ module Yahoo
 
         def to_s
           Parse::Calais::parse( @doc ) do |k, v|
-              puts "#{k} => #{v}"
+            puts "#{k} => #{v}"
           end
         end
 

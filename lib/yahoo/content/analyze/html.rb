@@ -2,12 +2,7 @@ module Yahoo
   module Content
     module Analyze
       class Html
-        attr_reader :topic
-        attr_reader :date
-        attr_reader :author
-        attr_reader :msg
-        attr_reader :message_links
-        attr_reader :email_links
+        attr_reader :topic, :date, :author, :msg, :message_links, :email_links
 
         def initialize
           @message_links = []

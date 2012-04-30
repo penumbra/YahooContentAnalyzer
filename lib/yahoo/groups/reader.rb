@@ -3,15 +3,14 @@
 #
 module Yahoo
   module Groups
-    class Reader < Yahoo::Shared::Config
+    class Reader
       attr_reader :login
       attr_reader :yahoo_page
 
       def initialize
-        super( $ConfigFile )
-
         # group_host, group_name
-        add_properties!( Yahoo::Shared::Config::YahooConfigTag )
+        prop = YAML::load_file( $ConfigFile )
+        prop[ 'yahoo' ].each { |k, v| instance_variable_set("@#{k}", v) }
 
         @login = Yahoo::Groups::Login.new
 

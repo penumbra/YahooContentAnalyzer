@@ -5,28 +5,29 @@ require 'nokogiri'
 module Yahoo
   module Content
     module Parse
+      begin
+        prop = YAML::load_file( $ConfigFile )
+        prop[ 'yahoo_html_xpath' ].each {|k, v| const_set( "#{k}", v ) }
+      end
+
       # located an element by xpath within a specified HTML document
       class FindHtml
         class << self
-          begin
-            # set xpath = ... constants
-            prop = YAML::load_file( $ConfigFile )
-            prop[ 'yahoo_html_xpath' ].each { |key, value| const_set("#{key}", value) }
-          end
+          include Yahoo::Shared::Finder
 
-          def find_topic( fn, xpath = GroupTopicXPath )
-            node = Yahoo::Shared::Finder.find( fn, xpath )
+          def find_topic( fn, xpath = Parse::GroupTopicXPath )
+            node = find( fn, xpath )
             node.text
           end
 
-          def find_date( fn, xpath = GroupDateXPath )
-            node = Yahoo::Shared::Finder.find( fn, xpath )
+          def find_date( fn, xpath = Parse::GroupDateXPath )
+            node = find( fn, xpath )
             # title attribute
             node[0]['title'].chomp
           end
 
-          def find_author( fn, xpath = GroupAuthorXPath )
-            node = Yahoo::Shared::Finder.find( fn, xpath )
+          def find_author( fn, xpath = Parse::GroupAuthorXPath )
+            node = find( fn, xpath )
 
             idx = (node.text =~ /\</)
             if idx 
@@ -36,13 +37,13 @@ module Yahoo
             end
           end
 
-          def find_content( fn, xpath = MessageXPath )
-            node = Yahoo::Shared::Finder.find( fn, xpath )
+          def find_content( fn, xpath = Parse::MessageXPath )
+            node = find( fn, xpath )
             node.text
           end
 
-          def find_links( fn, xpath = MessageLinksXPath )
-            node_list = Yahoo::Shared::Finder.find( fn, xpath )
+          def find_links( fn, xpath = Parse::MessageLinksXPath )
+            node_list = find( fn, xpath )
 
             # return an array of id's representing other messages in the newsgroup thread
             get_ids( node_list )
@@ -76,6 +77,7 @@ module Yahoo
           end
         end # self
       end # FindHtml
+
     end # Parse
   end # Content
 end # Yahoo

@@ -4,7 +4,7 @@ module Yahoo
       YamlHeader = "---"
 
       def initialize
-        @html    = Analyze::Html.new
+        @html = Analyze::Html.new
 
         @ie = [Analyze::Amplify.new, Analyze::Calais.new, Analyze::Zemanta.new, Analyze::Alchemy.new]
       end

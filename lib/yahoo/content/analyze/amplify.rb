@@ -5,23 +5,20 @@ require 'uri'
 module Yahoo
   module Content
     module Analyze
-      class Amplify < Yahoo::Shared::Config
+      class Amplify
         attr_reader :doc
 
         def initialize
-          super( $ConfigFile )
-
-          # api_key, host, port, path
-          add_properties!( Yahoo::Shared::Config::OpenAmplifyTag )
+          # api_key, input_type, host, port, path
+          prop = YAML::load_file( $ConfigFile )
+          prop[ 'open_amplify' ].each { |k, v| instance_variable_set("@#{k}", v ) }
 
           @http = Net::HTTP.new( @host, @port )
         end
 
         # return the Open Amplify API response as Nokogiri XML Doc
         def analyze( html )
-          input_type= 'inputText'
-
-          response = @http.post( @path, "apiKey=#{@api_key}&#{input_type}=#{URI::escape( html.msg )}" )
+          response = @http.post( @path, "apiKey=#{@api_key}&#{@input_type}=#{URI::escape( html.msg )}" )
 
           @doc = Nokogiri::XML( response.read_body )
         end

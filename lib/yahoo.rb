@@ -6,7 +6,6 @@ require 'yaml'
 require 'browse'
 
 # shared by several modules
-require 'yahoo/shared/config'
 require 'yahoo/shared/finder'
 require 'yahoo/shared/file_utils'
 
@@ -29,6 +28,7 @@ require 'yahoo/content/parse/amplify'
 require 'yahoo/content/analyze/calais'
 require 'yahoo/content/analyze/zemanta'
 require 'yahoo/content/analyze/amplify'
+require 'yahoo/content/analyze/alchemy'
 require 'yahoo/content/analyze/html'
 
 # runtime exec manager

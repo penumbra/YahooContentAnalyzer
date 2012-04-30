@@ -6,14 +6,13 @@ module Yahoo
     # Presently, it performs information extraction on
     # one of 30,000 messages
     #
-    class Runner < Yahoo::Shared::Config
+    class Runner
       attr_reader :content
 
       def initialize
-        super( $ConfigFile )
-
         # data_path, output_path, save_group_path, do_reprocessing, reprocess_file
-        add_properties!( Yahoo::Shared::Config::AppConfigTag )
+        prop = YAML::load_file( $ConfigFile )
+        prop[ 'application' ].each { |k, v| instance_variable_set("@#{k}", v ) }
 
         @ie = Yahoo::Content::Info.new
 
