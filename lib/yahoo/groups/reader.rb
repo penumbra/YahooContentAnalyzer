@@ -3,14 +3,14 @@
 #
 module Yahoo
   module Groups
-    class Reader
+
+    class Reader < Yahoo::Shared::AppConfig
       attr_reader :login
       attr_reader :yahoo_page
 
       def initialize
         # group_host, group_name
-        prop = YAML::load_file( $ConfigFile )
-        prop[ 'yahoo' ].each { |k, v| instance_variable_set("@#{k}", v) }
+        config!( 'yahoo' )
 
         @login = Yahoo::Groups::Login.new
 
@@ -47,6 +47,7 @@ module Yahoo
 
         (page != nil) ? page.body : nil
       end
-    end
-  end
-end
+    end # Reader
+
+  end # Groups
+end # Yahoo

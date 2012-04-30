@@ -5,12 +5,12 @@ require 'uri'
 module Yahoo
   module Content
     module Analyze
-      class Alchemy
+
+      class Alchemy < ApiConfig
         attr_reader :doc
 
         def initialize
-          prop = YAML::load_file( $ConfigFile )
-          prop[ 'alchemy' ].each { |k, v| instance_variable_set("@#{k}", v ) }
+          config!( 'alchemy' )
 
           @http = Net::HTTP.new( @host, @port )
         end

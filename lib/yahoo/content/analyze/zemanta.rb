@@ -1,14 +1,11 @@
 module Yahoo
   module Content
     module Analyze
-      class Zemanta
+      class Zemanta < ApiConfig
         attr_reader :doc
 
-
         def initialize
-          # api_key, host, port, path
-          prop = YAML::load_file( $ConfigFile )
-          prop[ 'zemanta' ].each { |k, v| instance_variable_set("@#{k}", v ) }
+          config!( 'zemanta' )
 
           @request = {
             'method' => @method,

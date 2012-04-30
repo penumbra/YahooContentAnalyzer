@@ -1,15 +1,11 @@
 module Yahoo
   module Topics
-    # usage:
-    #   tr = Topics::Runner( my_yaml_file )
-    class Runner
+
+    class Runner < Yahoo::Shared::AppConfig
       attr_reader :topics
 
       def initialize
-        # data_path, output_path, search_expr, ...
-        prop = YAML::load_file( $ConfigFile )
-        prop[ 'application' ].each { |key, value| instance_variable_set("@#{key}", value) }
-
+        config! # data_path, output_path, search_expr, etc
         @topics = Set.new
       end
 
@@ -31,5 +27,6 @@ module Yahoo
         f.close
       end
     end
-  end
-end
+
+  end # Topics
+end # Yahoo

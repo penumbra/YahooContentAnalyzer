@@ -1,13 +1,13 @@
 module Yahoo
   module Content
     module Analyze
-      class Calais
+
+      class Calais < ApiConfig
         attr_reader :doc
 
         def initialize
           # api_key, host, port
-          prop = YAML::load_file( $ConfigFile )
-          prop[ 'open_calais' ].each { |k, v| instance_variable_set("@#{k}", v ) }
+          config!( 'open_calais' )
 
           @uri = URI.parse( @host )
 

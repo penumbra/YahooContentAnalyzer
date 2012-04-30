@@ -5,13 +5,12 @@ require 'uri'
 module Yahoo
   module Content
     module Analyze
-      class Amplify
+      class Amplify < ApiConfig
         attr_reader :doc
 
         def initialize
           # api_key, input_type, host, port, path
-          prop = YAML::load_file( $ConfigFile )
-          prop[ 'open_amplify' ].each { |k, v| instance_variable_set("@#{k}", v ) }
+          config!( 'open_amplify' )
 
           @http = Net::HTTP.new( @host, @port )
         end

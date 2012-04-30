@@ -3,13 +3,13 @@
 #
 module Yahoo
   module Groups
-    class Login
+
+    class Login < Yahoo::Shared::AppConfig
       attr_reader :agent
 
       def initialize
         # login, password, login_url, login_form, browser_type, idle_timeout_sec
-        prop = YAML::load_file( $ConfigFile )
-        prop[ 'yahoo' ].each { |k, v| instance_variable_set("@#{k}", v ) }
+        config!( 'yahoo' )
 
         @agent = Mechanize.new
         @agent.follow_meta_refresh = true
@@ -33,5 +33,6 @@ module Yahoo
         puts "yahoo login successful..."
       end
     end
-  end
-end
+
+  end # Groups
+end # Yahoo

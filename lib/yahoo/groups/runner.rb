@@ -3,14 +3,13 @@ require 'yaml'
 
 module Yahoo
   module Groups
-    class Runner
+
+    class Runner < Yahoo::Shared::AppConfig
       # wait 5 seconds so as to not cause a denial of service exception
       WaitSeconds = 5
 
       def initialize
-        # data_path, output_path, save_group_path, do_reprocessing, reprocess_file, search_expr
-        prop = YAML::load_file( $ConfigFile )
-        prop[ 'application' ].each { |k, v| instance_variable_set("@#{k}", v) }
+        config! # data path, output path, etc
 
         # use Yahoo::Groups::Login class to login to Yahoo
         @yahoo = Yahoo::Groups::Reader.new
@@ -50,6 +49,7 @@ module Yahoo
 
         sleep( WaitSeconds )
       end
-    end
-  end
-end
+    end # Runner
+
+  end # Groups
+end # Yahoo

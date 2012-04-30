@@ -6,6 +6,7 @@ require 'yaml'
 require 'browse'
 
 # shared by several modules
+require 'yahoo/shared/app_config'
 require 'yahoo/shared/finder'
 require 'yahoo/shared/file_utils'
 
@@ -25,6 +26,7 @@ require 'yahoo/content/parse/zemanta'
 require 'yahoo/content/parse/amplify'
 
 # information extraction
+require 'yahoo/content/analyze/api_config'
 require 'yahoo/content/analyze/calais'
 require 'yahoo/content/analyze/zemanta'
 require 'yahoo/content/analyze/amplify'
