@@ -99,3 +99,9 @@ To illustrate these tools, paste the text of one of the downloaded messages into
 ## License
 Yahoo is released under the Ruby license (see the LICENSE file), which is compatible with the
 GNU GPL (see the COPYING file) via an explicit dual-licensing clause.
+
+<a href="http://www.w3.org/RDF/" title="RDF Resource Description
+Framework"> <img border="0" src="http://www.w3.org/RDF/icons/rdf_w3c_button.32"
+alt="RDF Resource Description Framework Icon"/></a>
+
+
